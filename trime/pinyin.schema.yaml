@@ -1,0 +1,18 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: pinyin
+  name: 北京官話（京師片）- 汉语拼音
+
+__include: luna_pinyin.schema:/
+__patch:
+  emoji_suggestion: {opencc_config: emoji.json, option_name: emoji_suggestion}
+  engine/filters/@next: simplifier@emoji_suggestion
+  switches/@0/states:
+  switches/@1/states: [ ◢, ■ ]
+  switches/@2/states: [ 漢, 汉 ]
+  switches/@before 0: {options: [ _keyboard_pinyin_keyboards ], states: [ ⌨ ]}
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  switches/@next: {name: emoji_suggestion, reset: 1}
+  translator/prism: pinyin

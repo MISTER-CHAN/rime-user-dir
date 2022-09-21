@@ -1,0 +1,8 @@
+patch:
+  abc_segmentor:
+  schema/name: 筆畫
+  switches/@0/states:
+  switches/@1/states: [ ◢, ■ ]
+  switches/@before 0: {options: [ _keyboard_stroke_keyboards ], states: [ ⌨ ]}
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  translator/enable_user_dict: false

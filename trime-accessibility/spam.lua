@@ -1,0 +1,1 @@
+io.open(service.LuaDir .. "/spam.txt", "w"):write(""):close()

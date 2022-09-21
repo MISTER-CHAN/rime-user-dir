@@ -1,0 +1,14 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: greek
+  name: Ελληνικό
+
+switches:
+  - options: [ _keyboard_menu ]
+    states: [ ㄓ ]
+  - options: [ _key_Schema_selecting ]
+    states: [ ⌨ ]
+  - options: [ _keyboard_greek_typefaces ]
+    states: [ '𝚨' ]

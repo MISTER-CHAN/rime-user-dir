@@ -1,0 +1,41 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: pinyin_hq
+  name: 北京官話（京師片）- 汉语拼音 [14 鍵]
+
+__include: pinyin.schema:/
+__patch:
+  speller/alphabet: 123456789LABCM
+  speller/algebra/+:
+    - xform/[qw]/1/
+    - xform/[er]/2/
+    - xform/[ty]/3/
+    - xform/[ui]/4/
+    - xform/[op]/5/
+    - xform/[as]/6/
+    - xform/[df]/7/
+    - xform/[gh]/8/
+    - xform/[jk]/9/
+    - xform/l/L/
+    - xform/[zx]/A/
+    - xform/[cv]/B/
+    - xform/[bn]/C/
+    - xform/m/M/
+  translator/preedit_format/+:
+    - xform/1/qw/
+    - xform/2/er/
+    - xform/3/ty/
+    - xform/4/ui/
+    - xform/5/op/
+    - xform/6/as/
+    - xform/7/df/
+    - xform/8/gh/
+    - xform/9/jk/
+    - xform/L/l/
+    - xform/A/zx/
+    - xform/B/cv/
+    - xform/C/bn/
+    - xform/M/m/
+  translator/prism: pinyin_hq

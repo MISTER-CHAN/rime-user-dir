@@ -1,0 +1,12 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: cyrillic
+  name: Кири́ллица []
+
+switches:
+  - options: [ _keyboard_menu ]
+    states: [ ㄓ ]
+  - options: [ _keyboard_cyrillic_keyboards ]
+    states: [ ⌨ ]

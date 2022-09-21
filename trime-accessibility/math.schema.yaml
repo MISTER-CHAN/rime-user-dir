@@ -1,0 +1,14 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: math
+  name: 數學符號
+
+switches:
+  - options: [ _keyboard_menu ]
+    states: [ 'ㄓ' ]
+  - options: [ _key_Schema_selecting ]
+    states: [ '⌨' ]
+  - name: full_shape
+    states: [ "◢", "■" ]

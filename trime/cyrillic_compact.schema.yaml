@@ -1,0 +1,8 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: cyrillic_compact
+  name: Кири́ллица
+
+__include: cyrillic.schema:/

@@ -1,0 +1,8 @@
+patch:
+  schema/name: 速成五代
+  switches/@0/states:
+  switches/@1/states: [ ◢, ■ ]
+  switches/@2/states: [ 漢, 汉 ]
+  switches/@before 0: {options: [ _keyboard_bopomofo_keyboards ], states: [ ⌨ ]}
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  translator/enable_user_dict: false

@@ -1,0 +1,166 @@
+# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: enmun
+  name: 언문
+  version: "0.92"
+  author:
+    - MISTER_CHAN
+  description: |
+    언문입력법 for Rime
+    ㄱg ㄴn ㄷd ㄹlr ㅁm ㅂbv ㅅs ㅇqx
+    ㅈjz ㅊc ㅋk ㅌt ㅍpf ㅎh
+    ㅏaㅐai ㅑia ㅒiai ㅓe ㅔei ㅕie ㅖiei
+    ㅗo ㅘoa ㅙoai ㅚoi ㅛio
+    ㅜu ㅝue ㅞuei ㅟui ㅠiu
+    ㅡy ㅢyi ㅣi
+
+switches:
+  - options: [ _key_Menu ]
+    states: [ ㄓ ]
+  - options: [ _key_Schema_selecting ]
+    states: [ ⌨ ]
+  - name: ascii_mode
+    reset: 0
+  - name: half_shape
+    states: [ ■, ◢ ]
+    reset: 0
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - r10n_translator
+    - reverse_lookup_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: 'zyxwvutsrqponmlkjihgfedcbaQWERTOP'
+  delimiter: " '"
+  algebra:
+    - derive/(^|[ '])q?([aeiouy])/$1$2/
+    - xform/bb/1/
+    - xform/jj/2/
+    - xform/dd/3/
+    - xform/gg/4/
+    - xform/ss/5/
+    - xform/iai/9/
+    - xform/iei/0/
+    - xform/b/Q/
+    - xform/j/W/
+    - xform/d/E/
+    - xform/ng/D/
+    - xform/g/R/
+    - xform/s|z/T/
+    - xform/io/Y/
+    - xform/ai/O/
+    - xform/ei/P/
+    - xform/ie/U/
+    - xform/ia/I/
+    - xform/m/A/
+    - xform/n/S/
+    - xform/q|x/D/
+    - xform/l/F/
+    - xform/h/G/
+    - xform/o|v/H/
+    - xform/e/J/
+    - xform/a/K/
+    - xform/k/Z/
+    - xform/t/X/
+    - xform/c/C/
+    - xform/p/V/
+    - xform/iu/B/
+    - xform/i/L/
+    - xform/u/N/
+    - xform/y/M/
+    - xlit/QWERTYUIOPASDFGHJKLZXCVBNM/qwertyuiopasdfghjklzxcvbnm/
+    - xlit/1234590/QWERTOP/
+
+translator:
+  dictionary: hangyl
+  prism: hangyl
+  enable_user_dict: false
+  spelling_hints: 0
+  preedit_format:
+    - xform/./​/
+    - xform/'/ /
+    - xform/(^|[ '])([qx])/$1/
+    - xform/([qx])/ng/
+    - xform/([^ ])r($|[ '])/$1l$2/
+  comment_format:
+    - xform/(^|[ '])q/$1/
+    - xform/q/ng/
+    - xform/([^ ])r$/$1l/
+
+reverse_lookup:
+  dictionary: hangyl_hanja
+  prefix: "`"
+  tips: 〔漢字・한자〕
+  comment_format:
+    - xform/(^|[ '])q/$1/
+    - xform/q/ng/
+
+punctuator:
+  import_preset: default
+  half_shape:
+    "," : { commit: "," }
+    "." : { commit: "." }
+    "<" : "<"
+    ">" : ">"
+    "/" : "/"
+    "?" : { commit: "?" }
+    ";" : { commit: ";" }
+    ":" : { commit: ":" }
+    "'" : "'"
+    "\"" : "\""
+    "\\" : "\\"
+    "|" : "|"
+    "`" : "`"
+    "~" : "~"
+    "!" : { commit: "!" }
+    "@" : "@"
+    "#" : "#"
+    "%" : "%"
+    "^" : "^"
+    "&" : "&"
+    "*" : "*"
+    "(" : "("
+    ")" : ")"
+    "-" : "-"
+    "_" : "_"
+    "+" : "+"
+    "=" : "="
+    "[" : "["
+    "]" : "]"
+    "{" : "{"
+    "}" : "}"
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*$"
+
+abc_segmentor:
+  extra_tags:
+    #- reverse_lookup

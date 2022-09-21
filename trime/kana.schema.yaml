@@ -1,0 +1,15 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: kana
+  name: カナ
+
+switches:
+  - options: [ _keyboard_menu ]
+    states: [ ㄓ ]
+  - options: [ _keyboard_kana_keyboards ]
+    states: [ ⌨ ]
+  - name: half_shape
+    reset: 0
+    states: [ ■, ◢ ]

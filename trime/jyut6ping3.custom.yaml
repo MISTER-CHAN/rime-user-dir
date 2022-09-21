@@ -1,0 +1,12 @@
+patch:
+  emoji_suggestion/tips:
+  schema/name: 粵語（廣府片）- 粵拼
+  switches/@0/states:
+  switches/@1/states: [ ◢, ■ ]
+  switches/@2/states: [ 漢, 港, 臺, 陆 ]
+  switches/@4/reset: 1
+  switches/@4/states:
+  switches/@before 0: {options: [ _keyboard_bopomofo_keyboards ], states: [ ⌨ ]}
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  translator/enable_user_dict: false
+  translator/spelling_hints: 0

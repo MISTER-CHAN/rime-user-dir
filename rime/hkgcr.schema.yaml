@@ -1,0 +1,160 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: hkgcr
+  name: "粵語 (廣府) - 香港政府拼音"
+  version: "0.2"
+  author:
+    - MISTER_CHAN
+  description: |
+    香港政府粵語拼音方案
+  dependencies:
+    - luna_pinyin
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中, Ａ ]
+  - name: full_shape
+    states: [ ◢, ■ ]
+  - name: simplification
+    states: [ 傳統, 简化 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - derive/[123456]//           # 忽略声调
+    - abbrev/^([a-z]).+$/$1/     # 首字母簡拼
+    - abbrev/^(ng).+$/$1/        # 聲母簡拼
+    - abbrev/^([gk]w).+$/$1/     # 聲母簡拼
+    - derive/aa$/ah/          # 呀 aa -> ah
+    - derive/aa$/ar/
+    - derive/(^|[^a])au/$1ow/
+    - derive/(^|[^a])am/$1om/
+    - derive/(^|[^a])ap/$1op/
+    - derive/(^|[^a])am/$1um/
+    - derive/ei/ee/
+    - derive/(^|[^aeou])i/$1ee/
+    - derive/iu/ew/
+    - derive/o$/oh/        # 科 fo -> foh
+    - derive/o$/or/
+    - derive/ou$/o/
+    - derive/oi/oy/
+    - xform/yu/ue/               # 冤 yun -> yuen
+    - derive/([bfgmpw])u([int]?)$/$1oo$2/
+    - xform/([gk])u($|[int]$)/$1wu$2/
+    - derive/uk/ook/
+    - derive/eoi/u/
+    - derive/eo/u/              # 蹲 deon -> deun
+    - derive/oe/eu/              # 剁 doek -> deuk
+    - derive/oe/eo/
+    - derive/ji/i/
+    - xform/^j/y/               # 用 jung -> yung
+    - derive/ik$/ick/
+    - xform/^p/p\'/
+    - xform/^b/p/
+    - xform/^t/t\'/
+    - xform/^d/t/
+    - xform/^k/k\'/
+    - xform/^g/k/
+    - xform/'w/w\'/
+    - derive/^c/ts\'/              # 叉 caa -> cha
+    - xform/^c/ch\'/              # 叉 caa -> cha
+    - derive/^z/ts/               # 抓 zaa -> ja
+    - xform/^z/ch/               # 抓 zaa -> ja
+    - derive/^si$/sze/
+    - derive/^ts('?)i$/t$1ze/
+    - xform/^ts('?)i$/ts$1z/
+    - derive/^s/sh/
+
+translator:
+  dictionary: jyut6ping3
+  prism: hkgcr
+  spelling_hints: 0
+  preedit_format:
+    - xform/jip/ip/
+    - xform/(^|[^eouz])e($| |')/$1é$2/
+    - xform/ei/eí/
+    - xform/(^|[^aeou])i($| |')/$1í$2/
+    - xform/i([mnpt]($| |'))/í$1/
+    - xform/ou/ò/   # 好 hou -> ho
+    - xform/om/òm/
+    - xform/ue/üe/
+    - xform/(p'?|[fimw])u([int]?($| |'))/$1ú$2/
+    - xform/([^a])u($| |')/$1ü$2/
+    - xform/aa/á/
+    - xform/eu/éu/
+    - xform/ue/üe/
+  comment_format: &format
+    - xform/([gk])u([int]?($| |'))/$1wu$2/
+    - xform/(^| |')p/$1p\'/
+    - xform/b/p/
+    - xform/(^| |')t/$1t\'/
+    - xform/d/t/
+    - xform/(^| |')k/$1k\'/
+    - xform/(^| |')g/$1k/
+    - xform/'w/w\'/
+    - xform/(^| |')z/$1ts/               # 抓 zaa -> ja
+    - xform/c/ts\'/              # 叉 caa -> cha
+    - xform/ts('?)i($| |')/ts$1z$2/
+    - xform/si($| |')/sze$1/
+    - xform/(^|[^aeou])i($| |')/$1í$2/
+    - xform/i([mnpt]($| |'))/í$1/
+    - xform/aa/á/               # 煆 haa -> ha 
+    - xform/(^|[^oz])e($| |')/$1é$2/
+    - xform/ei/eí/
+    - xform/oe/éu/
+    - xform/ou/ò/   # 好 hou -> ho
+    - xform/yu/üe/
+    - xform/(p'?|[fimw])u([int]?($| |'))/$1ú$2/
+    - xform/eo/u/
+    - xform/j/y/
+
+reverse_lookup:
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format: *format
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"

@@ -1,0 +1,8 @@
+patch:
+  switches/@0: {options: [ _key_Menu ], states: [ "⌨" ]}
+  switches/@1/states: [ "◢", "■" ]
+  switches/@2/states: [ '漢', '汉' ]
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  switches/@next: {options: [ _keyboard_edit ], states: [ ‹|̲̅› ]}
+  translator/enable_user_dict: false
+  translator/spelling_hints: 0

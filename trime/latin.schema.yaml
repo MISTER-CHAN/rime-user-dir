@@ -1,0 +1,14 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: latin
+  name: Latina
+
+switches:
+  - options: [ _keyboard_menu ]
+    states: [ ㄓ ]
+  - options: [ _keyboard_latin_keyboards ]
+    states: [ ⌨ ]
+  - options: [ _keyboard_latin_typefaces ]
+    states: [ '𝐀' ]

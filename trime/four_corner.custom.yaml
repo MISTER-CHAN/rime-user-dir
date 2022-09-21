@@ -1,0 +1,7 @@
+patch:
+  switches/@0/states:
+  switches/@2/states: [ CJK, CJKͯ ]
+  switches/@1/states: [ ◢, ■ ]
+  switches/@before 0: {options: [ _key_Schema_selecting ], states: [ ⌨ ]}
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  translator/enable_user_dict: false

@@ -1,0 +1,112 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: ycr
+  name: 粵語 (廣府) - 耶魯拼音
+  version: "0.1"
+  author:
+    - MISTER_CHAN
+  description: |
+    耶魯粵語拼音方案
+    https://zh-yue.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E8%AA%9E%E8%A8%80%E5%AD%B8%E5%AD%B8%E6%9C%83%E7%B2%B5%E8%AA%9E%E6%8B%BC%E9%9F%B3%E6%96%B9%E6%A1%88
+  dependencies:
+    - stroke
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - options: [ trad_graph, simplification ]
+    reset: 0
+    states: [ 漢字, 汉字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+  - name: emoji_suggestion
+    reset: 1
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+  filters:
+    - simplifier@trad_graph
+    - simplifier
+    - simplifier@emoji_suggestion
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - derive/[123456]//           # 忽略声调
+    - xform/eu/ew/
+    - xform/(eo|oe)/eu/
+    - xform/aa($|\d)/a$1/
+    - xform/^jy/y/
+    - xform/^j/y/
+    - xform/^z/j/
+    - xform/^c/ch/
+
+translator:
+  dictionary: jyutping
+  prism: ycr
+  preedit_format:
+    - xlit/123456/¹²³⁴⁵⁶/
+  comment_format: &format
+    - xlit/123456/¹²³⁴⁵⁶/
+    - xform/eu/ew/
+    - xform/(eo|oe)/eu/
+    - xform/aa($|\d)/a$1/
+    - xform/^jy/y/
+    - xform/^j/y/
+    - xform/^z/j/
+    - xform/^c/ch/
+
+reverse_lookup:
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xform/`(.+)/$1/
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format: *format
+
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+
+trad_graph:
+  opencc_config: nto.json
+  option_name: trad_graph
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "^`[hspnz]*'?$"

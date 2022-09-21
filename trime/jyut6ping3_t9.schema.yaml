@@ -1,0 +1,20 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: jyut6ping3_t9
+  name: 粵語（廣府片）- 粵拼 [9 鍵]
+
+__include: jyut6ping3.schema:/
+__patch:
+  speller/alphabet: 23456789
+  speller/algebra/+:
+    - xform/[abc]/2/
+    - xform/[def]/3/
+    - xform/[ghi]/4/
+    - xform/[jkl]/5/
+    - xform/[mno]/6/
+    - xform/[ps]/7/
+    - xform/[tuv]/8/
+    - xform/[wyz]/9/
+  translator/prism: jyut6ping3_t9

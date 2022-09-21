@@ -1,0 +1,200 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: wgmr
+  name: "北語 (北京) - 威妥瑪拼音"
+  version: "0.6"
+  author:
+    - MISTER_CHAN
+  description: |
+    北京官話威妥瑪翟理斯式拼音
+    Wade–Giles Romanization System
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: half_shape
+    states: [ 全角, 半角 ]
+  - name: simplification
+    states: [ 傳統, 簡化 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - reverse_lookup_translator
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - erase/^xx$/
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - xform/^([nl])ve$/$1ue/
+    - xform/^([jqxy])u/$1v/
+    - derive/un$/uen/
+    - derive/ui$/uei/
+    - derive/iu$/iou/
+    #
+    - xform/(\b[gkh])e(\W|$)/$1o$2/
+    - 'xform yi(\W|$) i$1'
+    - 'xform ([bpmfdtnlsr]|[zc]h?)uo $1o'
+    - 'xform ([zcs]h|r)i $1ih'
+    - 'xform ([iy])an(\W|$) $1en$2'
+    - 'xform ([nl])ve(\W|$) $1ueh$2'
+    - 'xform ([iyuv])e(\W|$) $1eh$2'
+    - 'xform p p'''
+    - 'xform b p'
+    - 'xform t t'''
+    - 'xform d t'
+    - 'xform ([gk])ui $1uei'
+    - 'xform k k'''
+    - 'xform (\b)g k'
+    - 'xform ng|gn ng'
+    - 'xform c([aeou]|\W|$) ts''$1'
+    - 'xform z([aeou]|\W|$) ts$1'
+    - 'xform zi tzu'	#tzu	tsŭ tsû
+    - 'xform ci tz''u'	#tz''u	ts''ŭ ts''û
+    - 'xform si ssu'	#szu	ss''ŭ ssû
+    - 'xform ong ung'
+    - 'derive yi i'
+    - 'xform ([jqx])([uv])([a]?n?)(\W|$) $1yu$3$4'
+    - 'xform ([jqx])([uv])(e?h?)(\W|$) $1u$3$4'
+    - 'xform y([uv])([ae]?[nh]?)(\W|$) yu$2$3'
+    - 'xform (y[uv])(\W|$) yu$2'
+    - 'xform ([nl])v $1yu'
+    - 'derive ao au'	#au
+    - 'xform x hs'
+    - 'xform q|ch ch'''
+    - 'xform j|zh ch'
+    - 'xform (\b)er erh'
+    - 'xform (\b)r j'
+
+translator:
+  dictionary: luna_pinyin
+  prism: luna_wade_giles
+  spelling_hints: 9
+  preedit_format:
+    - xform/uen$/uên/
+    - 'xform ([nl])ue(\W|$) $1üeh$2'
+    - 'xform tzu tzŭ'	#tzu	tsŭ tsû
+    - 'xform tz''u tz''ŭ'	#tz''u	ts''ŭ ts''û
+    - 'xform ssu ssŭ'	#szu	ss''ŭ ssû
+    - 'xform e(n?g?)(\W|$) ê$1$2'
+    - 'xform ([nl])yu $1ü'
+    - 'xform (ch|ch''|hs)(yu|v)([ae]?n?)(\W|$) $1ü$3$4'
+    - 'xform (ch|ch''|hs)(u|v)eh(\W|$) $1üeh$3'
+    - 'xform y([uv])([ae]?[nh]?)(\W|$) yü$2$3'
+    - 'xform (y[uv])(\W|$) yü$2'
+    - 'xform (\b)er êrh'
+  comment_format: &format
+    - xform/(\b[gkh])e(\W|$)/$1o$2/
+    - 'xform yi(\W|$) i$1'
+    - 'xform ([bpmfdtnlsr]|[zc]h?)uo $1o'
+    - 'xform ([zcs]h|r)i $1ih'
+    - 'xform ([iy])an(\W|$) $1en$2'
+    - 'xform ([nl])ue(\W|$) $1üeh$2'
+    - 'xform ([iyuv])e(\W|$) $1eh$2'
+    - 'xform p p'''
+    - 'xform b p'
+    - 'xform t t'''
+    - 'xform d t'
+    - 'xform ([gk])ui $1uei'
+    - 'xform k k'''
+    - 'xform (\b)g k'
+    - 'xform ng|gn ng'
+    - 'xform c([aeou]|\W|$) ts''$1'
+    - 'xform z([aeou]|\W|$) ts$1'
+    - 'xform zi tzŭ'	#tzu	tsŭ tsû
+    - 'xform ci tz''ŭ'	#tz''u	ts''ŭ ts''û
+    - 'xform si ssŭ'	#szu	ss''ŭ ssû
+    - 'xform (\b|[bpmfdtnlgkhzcsrw])e(n?g?)(\W|$) $1ê$2$3'
+    - 'xform ain ien'
+    - 'xform ong? ung'
+    - 'xform ([iy])([ou])(ng) $1u$3'
+    - 'xform ([jqxy])([uv])([ae]?[nh]?)(\W|$) $1ü$3$4'
+    - 'xform (y[uv])(\W|$) yü$2'
+    - 'xform ([nl])v $1ü'
+    - 'xform ao|oa|au ao'	#au
+    - 'xform x hs'
+    - 'xform q|ch ch'''
+    - 'xform j|zh ch'
+    - 'xform (\b)er êrh'
+    - 'xform (\b)r j'
+
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase
+  db_class: stabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+
+reverse_lookup:
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format: *format
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default
+  bindings:
+    # Emacs style
+    - { when: composing, accept: Control+p, send: Up }
+    - { when: composing, accept: Control+n, send: Down }
+    - { when: composing, accept: Control+b, send: Left }
+    - { when: composing, accept: Control+f, send: Right }
+    - { when: composing, accept: Control+a, send: Home }
+    - { when: composing, accept: Control+e, send: End }
+    - { when: composing, accept: Control+d, send: Delete }
+    - { when: composing, accept: Control+g, send: Escape }
+    - { when: composing, accept: Alt+v, send: Page_Up }
+    - { when: composing, accept: Control+v, send: Page_Down }
+    #- { when: composing, accept: Return, send: Control+Return }
+    # commonly used paging keys
+    - { when: composing, accept: ISO_Left_Tab, send: Page_Up }
+    - { when: composing, accept: Shift+Tab, send: Page_Up }
+    - { when: composing, accept: Tab, send: Page_Down }
+    - { when: paging, accept: minus, send: minus }
+    - { when: has_menu, accept: equal, send: equal }
+    - { when: always, accept: Control+Shift+4, toggle: dzing }
+    - { when: always, accept: Control+Shift+dollar, toggle: dzing }
+
+recognizer:
+  patterns:
+    email: "^[a-z][-_.0-9a-z]*@.*$"
+    uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp:|mailto:).*$"
+    reverse_lookup: "`[a-z]*'?$"
+    punct: '^/([A-Z|a-z]*|[0-9]|10)$'

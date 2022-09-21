@@ -1,0 +1,10 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: doublestroke
+  name: 筆畫 [雙筆畫]
+
+__include: stroke.schema:/
+__patch:
+  translator/prism: doublestroke

@@ -1,0 +1,15 @@
+patch:
+  recognizer/patterns/reverse_lookup: "^`[a-z]*'?$"
+  reverse_lookup/dictionary: stroke
+  reverse_lookup/prefix: '`'
+  reverse_lookup/prism: stroke
+  reverse_lookup/tips: 〔筆畫〕
+  reverse_lookup/preedit_format:
+    - xform/`(.+)/$1/
+    - xlit/hspnz/一丨丿丶乙/
+  switches/@0/states:
+  switches/@1/states: [ ◢, ■ ]
+  switches/@2/states: [ CJK, CJKͯ ]
+  switches/@before 0: {options: [ _key_Schema_selecting ], states: [ ⌨ ]}
+  switches/@before_0: {options: [ _keyboard_menu ], states: [ ㄓ ]}
+  translator/enable_user_dict: false

@@ -1,0 +1,20 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: pinyin_t9
+  name: 北京官話（京師片）- 汉语拼音 [9 鍵]
+
+__include: pinyin.schema:/
+__patch:
+  speller/alphabet: 23456789
+  speller/algebra/+:
+    - xform/[abc]/2/
+    - xform/[def]/3/
+    - xform/[ghi]/4/
+    - xform/[jkl]/5/
+    - xform/[mno]/6/
+    - xform/[pqrs]/7/
+    - xform/[tuv]/8/
+    - xform/[wxyz]/9/
+  translator/prism: pinyin_t9
