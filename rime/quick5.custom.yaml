@@ -1,0 +1,3 @@
+patch:
+  switches/@2/reset: 0
+  switches/@2/states:
