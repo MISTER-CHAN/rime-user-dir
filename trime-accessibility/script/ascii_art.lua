@@ -1,4 +1,5 @@
 require "import"
+import "android.graphics.*"
 import "android.util.TypedValue"
 import "android.view.*"
 import "android.widget.*"

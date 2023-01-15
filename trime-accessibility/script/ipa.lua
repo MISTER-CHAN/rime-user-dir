@@ -1,11 +1,16 @@
 require "import"
 
-import "android.widget.*"
-import "android.view.*"
 import "android.graphics.drawable.StateListDrawable"
+import "android.view.*"
+import "android.widget.*"
 import "com.osfans.trime.*"
 
 local arg = ...
+
+local colorScheme = Config.get().getColorScheme() == "black"
+local hilitedBackColor = colorScheme and 0xff3f3f3f or 0xffdfdfdf
+local backColor = colorScheme and 0xff1f1f1f or 0xffffffff
+local textColor = colorScheme and 0xffc0c0c0 or 0xff000000
 
 local function Back()
 	local stb = StateListDrawable()
@@ -332,7 +337,7 @@ elseif category == "vowel" then
 				layout_marginTop = "2dp",
 				layout_marginBottom = "2dp",
 				text = utf8.sub(v, c, c),
-				textColor = 0xff000000,
+				textColor = textColor,
 				textSize = "16sp",
 				onClick = function (v, e)
 					if v.text ~= " " then
@@ -424,7 +429,7 @@ elseif category == "other" then
 				gravity = "center",
 				layout_margin = "1dp",
 				text = utf8.sub(v[2], c, c),
-				textColor = 0xff000000,
+				textColor = textColor,
 				textSize = "24sp",
 				onClick = function (v, e)
 					if v.text ~= " " then
