@@ -100,7 +100,7 @@ local function checkUpdate(resource, id, name, branch)
 			local b = true
 			local f = {}
 			local lm = 0
-			for name, description, time in content:gmatch("<a class=\"js%-navigation%-open Link%-%-primary\" title=\"(.-)\" data%-pjax=\"#repo%-content%-pjax%-container\".-<a data%-pjax=\"true\" title=\"(.-)\".-<time%-ago datetime=\"(.-)\" data%-view%-component=\"true\"") do
+			for name, description, time in content:gmatch("<a class=\"js%-navigation%-open Link%-%-primary\" title=\"(.-)\" data%-turbo%-frame=\"repo%-content%-turbo%-frame\".-<a data%-pjax=\"true\" title=\"(.-)\".-<relative%-time tense=\"past\" datetime=\"(.-)\" data%-view%-component=\"true\"") do
 				ll[#ll + 1] = {
 					TextView,
 					layout_width = "match",
