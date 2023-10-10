@@ -1,0 +1,88 @@
+# Rime dictionary
+# mim: set ts=8 sw=8 noet:
+# encoding: utf-8
+#
+# MISTER_CHAN
+# 
+# English
+#
+
+---
+name: english
+version: "0.4"
+sort: by_weight
+use_preset_vocabulary: false
+...
+
+could've	couldve
+Could've	Couldve
+COULD'VE	Couldve
+he'd	hed
+He'd	Hed
+HE'D	Hed
+he'll	hell
+He'll	Hell
+HE'LL	Hell
+how're	howre
+How're	Howre
+HOW'RE	Howre
+how's	hows
+How's	Hows
+HOW'S	Hows
+I'm	Im
+I'M	Im
+I'd	Id
+I'D	Id
+I've	Ive
+I'VE	Ive
+it'd	itd
+It'd	Itd
+IT'D	Itd
+she'd	shed
+She'd	Shed
+SHE'D	Shed
+she'll	shell
+She'll	Shell
+SHE'LL	Shell
+should've	shouldve
+Should've	Shouldve
+SHOULD'VE	Shouldve
+there're	therere
+There're	Therere
+THERE'RE	Therere
+they'd	theyd
+They'd	Theyd
+THEY'D	Theyd
+they've	theyve
+They've	Theyve
+THEY'VE	Theyve
+we'd	wed
+We'd	Wed
+WE'D	Wed
+what're	whatre
+What're	Whatre
+WHAT'RE	Whatre
+when're	whenre
+When're	Whenre
+WHEN'RE	Whenre
+when's	whens
+When's	Whens
+WHEN'S	Whens
+where're	wherere
+Where're	Wherere
+WHERE'RE	Wherere
+where's	wheres
+Where's	Wheres
+WHERE'S	Wheres
+who're	whore
+Who're	Whore
+WHO'RE	Whore
+why'd	whyd
+Why'd	Whyd
+WHY'D	Whyd
+won't	wont
+Won't	Wont
+WON'T	Wont
+would've	wouldve
+Would've	Wouldve
+WOULD'VE	Wouldve
