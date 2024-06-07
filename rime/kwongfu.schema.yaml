@@ -1,0 +1,149 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: kwongfu
+  name: "粵語（廣府片）- IPA 轉寫"
+  version: '1.0'
+  author:
+    - MISTER_CHAN
+  description: |
+    粵語
+  dependencies:
+    - stroke
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ "中", "Ａ" ]
+  - name: full_shape
+    states: [ "◢", "■" ]
+  - name: ascii_punct
+    states: [ "。，", "．，" ]
+  - options: [ trad_graph, none, simp_trad_graph, simplification ]
+    reset: 0
+    states: [ "傳統字形", "不轉換", "简体旧字形", "大陆标准" ]
+  - options: [ cjk_unif, cjk_comp ]
+    states: [ "統一", "兼容" ]
+  - name: emoji_suggestion
+    reset: 1
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+  filters:
+    - simplifier@trad_graph
+    - simplifier@simp_trad_graph
+    - simplifier@cjk_comp
+    - simplifier
+    - simplifier@emoji_suggestion
+    - uniquifier
+    - charset_filter@gbk
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  delimiter: " '"
+  algebra:
+    - xform/yu/y/
+    - derive/eoi/eoy/
+    - xform/eo(.)/r$1/
+    - xform/oe/r/
+    - xform/^gw/r/
+    - xform/^kw/i/
+    - xform/aa/q/
+    - derive/z/x/
+    - xform/ng/v/
+    - derive/([123456])//         # 忽略声调
+
+translator:
+  dictionary: jyut6ping3
+  prism: kwongfu
+  preedit_format:
+    - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
+    - xform/q/aa/
+    - xform/(^| |')i([aio])/$1kw$2/
+    - xform/(^| |')r([^t])/$1gw$2/
+    - xform/x/z/
+    - xform/v/ng/
+    - xform/r($|[ 'k]|ng)/oe$1/
+    - xform/(^| |')rt/$1oet/
+    - xform/r([nty]($| |'|\d))/eo$1/
+    - xform/r([iu]($| |'|\d))/eo$1/
+    - xform/eoi/eoy/
+    ################
+    - xform/(^| )([aeiouy])/$1'$2/
+    - xform/(^| |')t/$1t‘/
+    - xform/d/t/
+    - xform/(^| |')p/$1p‘/
+    - xform/(^| |')k/$1k‘/
+    - xform/(^| |')g/$1k/
+    - xform/c/ts‘/
+    - xform/z/ts/
+    - xform/(^| |')b/$1p/
+  comment_format: &format
+    - xform/yu/y/
+    - xform/eoi/eoy/
+    - xform/(^| )([aeiouy])/$1'$2/
+    - xform/(^| )t/$1t‘/
+    - xform/d/t/
+    - xform/(^| )p/$1p‘/
+    - xform/(^| )k/$1k‘/
+    - xform/(^| )g/$1k/
+    - xform/c/ts‘/
+    - xform/z/ts/
+    - xform/(^| )b/$1p/
+
+reverse_lookup:
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xform/`(.+)/$1/
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format: *format
+
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+
+trad_graph:
+  opencc_config: nto.json
+  option_name: trad_graph
+
+simp_trad_graph:
+  opencc_config: tts.json
+  option_name: simp_trad_graph
+
+cjk_comp:
+  opencc_config: utc.json
+  option_name: cjk_comp
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "^`[hspnz]*'?$"
