@@ -64,7 +64,7 @@ style:
   key_long_text_size: 20 #長標籤字號
   key_text_size: 24 #鍵字號
   key_width: 10.0 #鍵寬，佔螢幕寬的百分比
-  keyboards: [.default, edit, letter, number, symbols] #鍵盤配置：自動鍵盤、字母、數字、符號
+  keyboards: [edit, number, symbols] #鍵盤配置：自動鍵盤、字母、數字、符號
   label_text_size: 22 #標籤字號
   label_font: mc.ttf #編標籤字型
   latin_font: mc.ttf #西文字型
@@ -233,11 +233,11 @@ liquid_keyboard:
   fixed_key_bar:  # 固定按键条
     position: right  # 摆放位置（在滚动区域的……） top|bottom|left|right
     keys: [liquid_keyboard_key_exit, liquid_keyboard_key_space, liquid_keyboard_key_BackSpace, liquid_keyboard_key_Return] # 按键（显示名称为对应的label，不能放太多）
-  keyboards: [bl_l1s, emoji_smileys, emoji_people, clipboard, draft, candidate]
+  keyboards: [bl_l1s, emoticons, pictographs, clipboard, draft, candidate]
   bl_l1s:
     name: '!§'
     type: SINGLE
-    keys: [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', '-', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~', ' ', '¡', '¢', '£', '¤', '¥', '¦', '§', '¨', '©', 'ª', '«', '¬', '­', '®', '¯', '°', '±', '²', '³', '´', 'µ', '¶', '·', '¸', '¹', 'º', '»', '¼', '½', '¾', '¿', '×', '÷']
+    keys: [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~', ' ', '¡', '¢', '£', '¤', '¥', '¦', '§', '¨', '©', 'ª', '«', '¬', '­', '®', '¯', '°', '±', '²', '³', '´', 'µ', '¶', '·', '¸', '¹', 'º', '»', '¼', '½', '¾', '¿', '×', '÷']
   candidate:
     name: '▼'
     type: CANDIDATE
@@ -247,18 +247,14 @@ liquid_keyboard:
   draft:
     name: '🖆'
     type: DRAFT
-  emoji_smileys:
+  emoticons:
     name: '🙂'
     type: SINGLE
-    keys: '☹☺☻👿😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷🙁🙂🙃🙄🤐🤑🤒🤓🤔🤕🤗🤠🤡🤢🤣🤤🤥🤧🤨🤩🤪🤫🤬🤭🤮🤯🥰🥱🥳🥴🥵🥶🥸🥺🧐'
-  emoji_people:
+    keys: '☹☺☻👿😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷🙁🙂🙃🙄🤐🤑🤒🤓🤔🤕🤗🤠🤡🤢🤣🤤🤥🤧🤨🤩🤪🤫🤬🤭🤮🤯🥰🥱🥳🥴🥵🥶🥸🥺🧐🫠🫡🫢🫣🫤🫥🫨'
+  pictographs:
     name: '🖐'
     type: SINGLE
-    keys: '☝✊✋✌✍👆👇👈👉👊👋👌👍👎👏👐💅💪🖎🖐🖑🖒🖓🖕🖖🙌🙏🤌🤏🤘🤙🤚🤛🤜🤝🤞🤟🤲🦵🦶👶🧒👦👧👨👩🧓👴👵‍🏻🏼🏽🏾🏿'
-  exit:
-    name: 返回
-    type: NO_KEY
-    keys: EXIT
+    keys: '☝✊✋✌✍👆👇👈👉👊👋👌👍👎👏👐💅💪🖎🖐🖑🖒🖓🖕🖖🙌🙏🤌🤏🤘🤙🤚🤛🤜🤝🤞🤟🤲🦵🦶🫰🫱🫲🫳🫴🫵🫶🫷🫸👶🧒👦👧👨👩🧓👴👵‍🏻🏼🏽🏾🏿'
 
 android_keys:
   # 仅供编辑键盘时参考，实际不产生任何效果
@@ -326,8 +322,10 @@ preset_keys:
   Alt_R: {label: 'Alt', send: Alt_R, shift_lock: click}
   Return: {label: enter_labels, send: Return, description: 回车}
   liquid_keyboard_key_Return: {label: ' ↵ ', send: Return}
+  Hide: {label: 隱藏, send: BACK}
   BackSpace: {label: ⌫, repeatable: true, send: BackSpace, description: 删除}
   liquid_keyboard_key_BackSpace: {label: '⌫',  repeatable: true, send: BackSpace}
+  Backspace_To_Home: {label: ' ', text: '{Shift+Home}{BackSpace}'}
   space: {repeatable: true, functional: false, send: space}
   liquid_keyboard_key_space: {label: '     ', repeatable: true, send: space}
   Escape: {label: Esc, send: Escape}
@@ -353,7 +351,7 @@ preset_keys:
   copy: {label: 複製, send: Control+c}
   copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
   paste: {label: 貼上, send: Control+v}
-  paste_Right: {label: '貼上', text: '{paste}{Right}'}
+  paste_: {label: ' ', send: 'Control+v'}
   clip_board: {label: 剪切板, send: Control+Shift+v}
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
@@ -377,26 +375,26 @@ preset_keys:
   Third: {label: ͢3, text: '{Right}{Right}{space}'}
   # rime狀態
   Caps_Lock: {label: "Ⓐ", send: Caps_Lock, shift_lock: click}
-  Mode_switch: {toggle: ascii_mode, send: Mode_switch, states: [ABC, ↩]}
+  Mode_switch: {toggle: ascii_mode, send: Mode_switch, states: [ 中文, 西文 ]}
   Zenkaku_Hankaku: {toggle: full_shape, send: Mode_switch, states: [ 半角, 全角 ]}
   Henkan: {toggle: simplification, send: Mode_switch, states: [ 繁體, 简体 ]}
   Charset_switch: {toggle: extended_charset, send: Mode_switch, states: [ 常用, 增廣 ]}
   Punct_switch: {toggle: ascii_punct, send: Mode_switch, states: [ 。，, ．， ]}
   #切换键盘
-  Keyboard_default: {label: '⮌', send: Eisu_toggle, select: .default}
+  Keyboard_default: {label: '🡨', send: Eisu_toggle, select: .default}
   Keyboard_edit: {label: ' ', send: Eisu_toggle, select: edit}
   Keyboard_number: {label: '123', send: Eisu_toggle, select: number}
-  Keyboard_last: {label: '⮌', send: Eisu_toggle, select: .last}
-  Keyboard_last_lock: {label: '⮌', send: Eisu_toggle, select: .last_lock}
+  Keyboard_last: {label: '🡨', send: Eisu_toggle, select: .last}
+  Keyboard_last_lock: {label: '🡨', send: Eisu_toggle, select: .last_lock}
   Keyboard_letter: {label: 'ABC', send: Eisu_toggle, select: default}
   Keyboard_symbols: {label: '!@#', send: Eisu_toggle, select: symbols}
   Keyboard_switch: {label: '⌨', send: Eisu_toggle, select: .next}
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
   liquid_keyboard_candidate: { label: '.', send: function, command: liquid_keyboard, option: "▼" }
-  liquid_keyboard_exit: {label: '⮌', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
+  liquid_keyboard_exit: {label: '🡨', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
   liquid_keyboard_key_exit: {label: ' ⮌ ', send: function, command: liquid_keyboard, option: "-1"}
-  liquid_keyboard_emoji_people: { label: 🖐, send: function, command: liquid_keyboard, option: "🖐" }
-  liquid_keyboard_emoji_smileys: { label: 🙂, send: function, command: liquid_keyboard, option: "🙂" }
+  liquid_keyboard_pictographs: { label: 🖐, send: function, command: liquid_keyboard, option: "🖐" }
+  liquid_keyboard_emoticons: { label: 🙂, send: function, command: liquid_keyboard, option: "🙂" }
   liquid_keyboard_clipboard: { label: '📋', send: function, command: liquid_keyboard, option: "📋" }
   set_color_ink: { label: 切换到ink配色, send: function, command: set_color_scheme, option: "ink" }
   # trime設定
@@ -462,20 +460,9 @@ preset_keys:
 
 preset_keyboards:
   bopomofo:
-    ascii_keyboard: letter
-    ascii_mode: 0
-    author: MISTER_CHAN
-    height: 40
-    keys: [{click: 1, label: "ㄅ", long_click: "!"}, {click: 2, label: "ㄉ", long_click: "@"}, {click: 3, label: "ˇ", long_click: "#"}, {click: 4, label: "ˋ", long_click: "$"}, {click: 5, label: "ㄓ", long_click: "%"}, {click: 6, label: "ˊ", long_click: "^"}, {click: 7, label: "˙", long_click: "&"}, {click: 8, label: "ㄚ", long_click: "*"}, {click: 9, label: "ㄞ", long_click: "("}, {click: 0, label: "ㄢ", long_click: ")"},
-      {click: q, label: "ㄆ"}, {click: w, label: "ㄊ"}, {click: e, label: "ㄍ"}, {click: r, label: "ㄐ"}, {click: t, label: "ㄔ"}, {click: y, label: "ㄗ"}, {click: u, label: "ㄧ"}, {click: i, label: "ㄛ"}, {click: o, label: "ㄟ"}, {click: p, label: "ㄣ"},
-      {click: a, label: "ㄇ"}, {click: s, label: "ㄋ"}, {click: d, label: "ㄎ"}, {click: f, label: "ㄑ"}, {click: g, label: "ㄕ"}, {click: h, label: "ㄘ"}, {click: j, label: "ㄨ"}, {click: k, label: "ㄜ"}, {click: l, label: "ㄠ"}, {click: ";", label: "ㄤ"},
-      {click: z, label: "ㄈ"}, {click: x, label: "ㄌ"}, {click: c, label: "ㄏ"}, {click: v, label: "ㄒ"}, {click: b, label: "ㄖ"}, {click: n, label: "ㄙ"}, {click: m, label: "ㄩ"}, {click: ",", label: "ㄝ"}, {click: ., label: "ㄡ"}, {click: "/", label: "ㄥ"},
-      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' '}, {click: '<', label: ','}, {click: space, key_text_size: 15, label: '注音', width: 20}, {click: '>', label: .}, {click: "-", label: "ㄦ"}, {click: BackSpace}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: CommitScriptText}]
-    lock: true
-    name: "注音鍵盤"
-    width: 10
+    __include: 'trime:/preset_keyboards/bopomofo'
   cangjie5:
-    __include: /preset_keyboards/qwerty
+    __include: '/preset_keyboards/qwerty'
     __patch:
       'keys/@0/label': '手'
       'keys/@1/label': '田'
@@ -505,13 +492,7 @@ preset_keyboards:
       'keys/@28/label': '一'
     name: "倉頡五代鍵盤"
   default:
-    ascii_mode: 0
-    author: "osfans <waxaca@163.com>"
-    height: 40
-    keys: [{click: 1, long_click: "!"}, {click: 2, long_click: "@"}, {click: 3, long_click: "#"}, {click: 4, long_click: "$"}, {click: 5, long_click: "%"}, {click: 6, long_click: "^"}, {click: 7, long_click: "&"}, {click: 8, long_click: "*"}, {click: 9, long_click: "("}, {click: 0, long_click: ")"}, {click: q, long_click: _}, {click: w, long_click: "-"}, {click: e, long_click: "+"}, {click: r, long_click: "="}, {click: t, long_click: "|"}, {click: y, long_click: "\\"}, {click: u, long_click: "["}, {click: i, long_click: "]"}, {click: o, long_click: "{"}, {click: p, long_click: "}"}, {click: a, long_click: select_all}, {click: s, long_click: Home}, {click: d, long_click: End}, {click: f, long_click: Page_Up}, {click: g, long_click: Page_Down}, {click: h, long_click: Left}, {click: j, long_click: Down}, {click: k, long_click: Up}, {click: l, long_click: Right}, {click: ";", long_click: ":"}, {click: z, long_click: "`"}, {click: x, long_click: cut}, {click: c, long_click: copy}, {click: v, long_click: paste}, {click: b, long_click: "~"}, {click: n, long_click: Insert}, {click: m, long_click: Delete}, {click: ","}, {click: .}, {click: "/", long_click: "?"}, {click: Shift_L}, {click: Keyboard_symbols, long_click: Keyboard_number}, {click: Mode_switch, long_click: Menu}, {click: space, key_text_size: 15, width: 30}, {click: "'", long_click: "\""}, {click: BackSpace, width: 15}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
-    lock: true
-    name: "預設40鍵"
-    width: 10
+    __include: 'trime:/preset_keyboards/default'
   edit:
     author: MISTER_CHAN
     keys: [{click: Tab}, {click: Home}, {click: Up}, {click: Page_Up}, {click: select_all},
@@ -521,9 +502,7 @@ preset_keyboards:
     name: "編輯"
     width: 20
   letter:
-    __include: /preset_keyboards/qwerty
-    ascii_mode: 1
-    name: 字母
+    __include: 'trime:/preset_keyboards/letter'
   mini:
     author: MISTER_CHAN
     keys: []
@@ -533,46 +512,26 @@ preset_keyboards:
     author: MISTER_CHAN
     keys: [{click: "+"}, {click: 1, long_click: Home}, {click: 2, long_click: Up}, {click: 3, long_click: Page_Up}, {click: "*"},
       {click: "-"}, {click: 4, long_click: Left}, {click: 5, swipe_left: Left, swipe_right: Right}, {click: 6, long_click: Right}, {click: "#"},
-      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace},
-      {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste}]
+      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo},
+      {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_}]
     name: "預設數字"
     width: 20
   qwerty:
     ascii_mode: 0
     author: MISTER_CHAN
-    keys: [{click: q, long_click: 1, swipe_left: 1, swipe_right: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_left: 2, swipe_right: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_left: 3, swipe_right: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_left: 4, swipe_right: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_left: 5, swipe_right: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_left: 6, swipe_right: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_left: 7, swipe_right: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_left: 8, swipe_right: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_left: 9, swipe_right: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_left: 0, swipe_right: 0, swipe_up: 0},
-      {width: 5}, {click: a, long_click: '`'}, {click: s, long_click: '-'}, {click: d, long_click: '='}, {click: f, long_click: '['}, {click: g, long_click: ']'}, {click: h, long_click: '\'}, {click: j, long_click: ';'}, {click: k, long_click: ''''}, {click: l, long_click: '/'}, {width: 5},
-      {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m}, {click: BackSpace, width: 15},
-      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoji_smileys}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_left: Left, swipe_right: Right, width: 40}, {click: ., has_menu: liquid_keyboard_candidate}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+    keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
+      {width: 5}, {click: a, long_click: '`', swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
+      {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo, width: 15},
+      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_left: Left, swipe_right: Right, width: 40}, {click: ., has_menu: liquid_keyboard_candidate}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     lock: true
     name: "預設26鍵"
     width: 10
   qwerty0:
-    name: 預設36鍵
-    author: "osfans <waxaca@163.com>"
-    ascii_mode: 0
-    width: 10
-    height: 40
-    label_transform: none #uppercase|none 中文模式下的字母標籤自動大寫
-    lock: true
-    keys: [{click: '1', long_click: '!'}, {click: '2', long_click: '@'}, {click: '3', long_click: '#'}, {click: '4', long_click: '$'}, {click: '5', long_click: '%'}, {click: '6', long_click: '^'}, {click: '7', long_click: '&'}, {click: '8', long_click: '*'}, {click: '9', long_click: '('}, {click: '0', long_click: ')'},
-      {click: 'q', long_click: '_'}, {click: 'w', long_click: '-'}, {click: 'e', long_click: '+'}, {click: 'r', long_click: '='}, {click: 't', long_click: '|'}, {click: 'y', long_click: '\'}, {click: 'u', long_click: '['}, {click: 'i', long_click: ']'}, {click: 'o', long_click: '{'}, {click: 'p', long_click: '}'},
-      {width: 5}, {click: 'a', long_click: select_all }, {click: 's', label: S, long_click: Home}, {click: 'd', long_click: End}, {click: 'f', long_click: Page_Up}, {click: 'g', long_click: Page_Down}, {click: 'h', long_click: Left}, {click: 'j', long_click: Down}, {click: 'k', long_click: ':'}, {click: 'l', long_click: ';'}, {width: 5},
-      {click: Shift_L, composing: "'", width: 15}, {click: 'z', long_click: '`'}, {click: 'x', long_click: cut}, {click: 'c', long_click: copy}, {click: 'v', long_click: paste}, {click: 'b', long_click: '~'}, {click: 'n', long_click: '"'}, {click: 'm', long_click: "MoeDict"}, {click: BackSpace, width: 15},
-      {click: Keyboard_symbols, long_click: Menu, width: 15}, {click: Keyboard_number}, {click: ',', long_click: '<'}, {click: space, key_text_size: 15, width: 30}, {click: '.', long_click: '>'}, {click: '/', long_click: '?'}, {click: Return, width: 15}]
+    __include: 'trime:/preset_keyboards/qwerty0'
   qwerty_:
-    name: 預設30鍵
-    author: "osfans <waxaca@163.com>"
-    ascii_mode: 0
-    width: 10
-    label_transform: none
-    lock: true
-    keys: [{click: 'q',  long_click: '!', swipe_up: 1}, {click: 'w', long_click: '@', swipe_up: 2}, {click: 'e', long_click: '#', swipe_up: 3}, {click: 'r', long_click: '$', swipe_up: 4}, {click: 't', long_click: '%', swipe_up: 5}, {click: 'y', long_click: '^', swipe_up: 6}, {click: 'u', long_click: '&', swipe_up: 7}, {click: 'i', long_click: '*', swipe_up: 8}, {click: 'o', long_click: '(', swipe_up: 9}, {click: 'p', long_click: ')', swipe_up: 0},
-      {click: 'a', long_click: select_all, swipe_up: Up, swipe_down: Down}, {click: 's', long_click: '~', swipe_left: Home, swipe_right: End, swipe_up: Page_Up, swipe_down: Page_Down}, {click: 'd', long_click: '-', swipe_down: '_'}, {click: 'f', long_click: '+', swipe_down: '='}, {click: 'g', long_click: '\', swipe_down: '|'}, {click: 'h', long_click: '[]{Left}', swipe_left: '[', swipe_right: ']'}, {click: 'j', long_click: '{}{Left}', swipe_left: '{', swipe_right: '}'}, {click: 'k', long_click: '"'}, {click: 'l', long_click: "'"}, {click: ';', long_click: ':'},
-      {click: 'z', long_click: '`'}, {click: 'x', long_click: cut}, {click: 'c', long_click: copy}, {click: 'v', long_click: paste}, {click: 'b', long_click: Time, swipe_up: Date}, {click: 'n', long_click: Insert}, {click: 'm', long_click: Delete}, {click: ',', long_click: '<'}, {click: '.', long_click: '>'}, {click: '/', long_click: '?'},
-      {click: Shift_L, composing: "'"}, {click: Keyboard_symbols, long_click: Menu}, {click: Keyboard_number}, {click: space, key_text_size: 15, width: 40}, {click: BackSpace, width: 15}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+    __include: 'trime:/preset_keyboards/qwerty_'
   sb1pv3:
-    __include: /preset_keyboards/qwerty
+    __include: '/preset_keyboards/qwerty'
   symbols:
     author: MISTER_CHAN
     height: 40
@@ -584,4 +543,4 @@ preset_keyboards:
     name: "符號"
     width: 10
   wubi86:
-    __include: /preset_keyboards/qwerty
+    __include: '/preset_keyboards/qwerty'
