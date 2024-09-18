@@ -17,12 +17,12 @@ style:
   candidate_spacing: 0.5 #候選間距
   candidate_text_size: 20 #候選字號
   candidate_use_cursor: true #高亮候選項
-  candidate_view_height: 25 #候選區高度
+  candidate_view_height: 40 #候選區高度
   color_scheme: default #配色方案
   comment_font: [noto-emoji.ttf, noto-symbols.ttf, noto-symbols-2.ttf, noto-math.ttf, mc.ttf] #編碼提示字型
-  comment_height: 15 #編碼提示區高度
-  comment_on_top: true #編碼提示在上方或右側
-  comment_text_size: 10 #編碼提示字號
+  comment_height: 0 #編碼提示區高度
+  comment_on_top: false #編碼提示在上方或右側
+  comment_text_size: 15 #編碼提示字號
   hanb_font: mcui_extbcdef.ttf #擴充字型
   horizontal: true #水平模式
   horizontal_gap: 6 #鍵水平間距
@@ -64,7 +64,7 @@ style:
   key_long_text_size: 20 #長標籤字號
   key_text_size: 24 #鍵字號
   key_width: 10.0 #鍵寬，佔螢幕寬的百分比
-  keyboards: [edit, number, symbols] #鍵盤配置：自動鍵盤、字母、數字、符號
+  keyboards: [] #鍵盤配置：自動鍵盤、字母、數字、符號
   label_text_size: 22 #標籤字號
   label_font: mc.ttf #編標籤字型
   latin_font: mc.ttf #西文字型
@@ -74,7 +74,7 @@ style:
   keyboard_height_land: 200 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
   preview_font: mc.ttf #按鍵提示字型
   preview_height: 60 #按鍵提示高度
-  preview_offset: -12 #按鍵提示縱向偏移
+  preview_offset: 0 #按鍵提示縱向偏移
   preview_text_size: 40 #按鍵提示字號
   proximity_correction: true #按鍵糾錯
   reset_ascii_mode: false #顯示鍵盤時重置爲中文狀態
@@ -86,7 +86,7 @@ style:
   text_font: mc.ttf #編碼字型
   #text_height: 22 #編碼區高度
   text_size: 16 #編碼區字號
-  vertical_correction: -10
+  vertical_correction: 0
   vertical_gap: 12 #鍵盤行距
   long_text_font: mc.ttf #剪贴板等可能包含大段文本使用的字体
   #background_folder: #背景图保存在background目录下的哪个子目录
@@ -144,7 +144,7 @@ fallback_colors:
 preset_color_schemes:
   black:
     author: MISTER_CHAN
-    back_color: 0x80222222
+    back_color: 0x222222
     border_color: 0xFFFFFF
     candidate_separator_color: 0x444444
     candidate_text_color: 0xFFFFFF
@@ -177,7 +177,7 @@ preset_color_schemes:
     return_key_back_color: 0x5599FF
     return_key_text_color: 0xFFFFFF
     shadow_color: 0x000000
-    text_back_color: 0x80222222
+    text_back_color: 0x222222
     text_color: 0xFFFFFF
 
   default:
@@ -185,7 +185,7 @@ preset_color_schemes:
     author: MISTER_CHAN #作者資訊
     back_color: 0x80EEEEEE #候選區背景
     border_color: 0xFFFFFF #邊框
-    candidate_separator_color: 0xffDDDDDD #候選分割背景
+    candidate_separator_color: 0xCCCCCC #候選分割背景
     candidate_text_color: 0x000000 #候選文字
     comment_text_color: 0x666666 #提示
     dark_scheme: '夜間'
@@ -233,7 +233,7 @@ liquid_keyboard:
   fixed_key_bar:  # 固定按键条
     position: right  # 摆放位置（在滚动区域的……） top|bottom|left|right
     keys: [liquid_keyboard_key_exit, liquid_keyboard_key_space, liquid_keyboard_key_BackSpace, liquid_keyboard_key_Return] # 按键（显示名称为对应的label，不能放太多）
-  keyboards: [bl_l1s, emoticons, pictographs, clipboard, draft, candidate]
+  keyboards: [bl_l1s, emoticons, pictographs, clipboard, draft, collection]
   bl_l1s:
     name: '!§'
     type: SINGLE
@@ -244,6 +244,9 @@ liquid_keyboard:
   clipboard:
     name: '📋'
     type: CLIPBOARD
+  collection:
+    name: '⭐'
+    type: COLLECTION
   draft:
     name: '🖆'
     type: DRAFT
@@ -355,7 +358,6 @@ preset_keys:
   copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
   paste: {label: 貼上, send: Control+v}
   paste_: {label: ' ', send: 'Control+v'}
-  clip_board: {label: 剪切板, send: Control+Shift+v}
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
   redo: {label: '↷', send: Control+y} #>=Android 6.0
@@ -399,10 +401,9 @@ preset_keys:
   Keyboard_switch: {label: '⌨', send: Eisu_toggle, select: .next}
   Keyboard_us_104: {label: ' ', send: Eisu_toggle, select: us_104}
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
-  liquid_keyboard_candidate: { label: '.', send: function, command: liquid_keyboard, option: "▼" }
+  liquid_keyboard_candidate: { label: ' ', send: function, command: liquid_keyboard, option: "▼" }
   liquid_keyboard_exit: {label: '🡨', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
   liquid_keyboard_key_exit: {label: ' ⮌ ', send: function, command: liquid_keyboard, option: "-1"}
-  liquid_keyboard_pictographs: { label: 🖐, send: function, command: liquid_keyboard, option: "🖐" }
   liquid_keyboard_emoticons: { label: 🙂, send: function, command: liquid_keyboard, option: "🙂" }
   liquid_keyboard_clipboard: { label: '📋', send: function, command: liquid_keyboard, option: "📋" }
   set_color_ink: { label: 切换到ink配色, send: function, command: set_color_scheme, option: "ink" }
@@ -425,7 +426,6 @@ preset_keys:
   Candidate_switch: {toggle: _hide_candidate, send: Mode_switch, states: [ 有候選, 無候選]}
   Comment_switch: {toggle: _hide_comment, send: Mode_switch, states: [ 有註釋, 無註釋]}
   Hint_switch: {toggle: _hide_key_hint, send: Mode_switch, states: [ 有助記, 無助記]}
-  Record_switch: {send: function, command: 'privacy.lua', option: 'record'}
   # trime命令
   Date: {label: 日期, send: function, command: date, option: "yyyy-MM-dd"}
   ChineseDate: {label: 农历, send: function, command: date, option: "zh_CN@calendar=chinese"} #農曆等日期(>=Android 7.0)：date 語言@calendar=曆法 格式。具體參見https://developer.android.com/reference/android/icu/util/Calendar.html
@@ -468,53 +468,49 @@ preset_keys:
   RLI: {functional: false, label: 'RLI', text: "\u2067"}
 
 preset_keyboards:
-  bopomofo:
-    __include: 'trime:/preset_keyboards/bopomofo'
-  cangjie5:
-    __include: '/preset_keyboards/qwerty'
-    __patch:
-      'keys/@0/label': '手'
-      'keys/@1/label': '田'
-      'keys/@2/label': '水'
-      'keys/@3/label': '口'
-      'keys/@4/label': '廿'
-      'keys/@5/label': '卜'
-      'keys/@6/label': '山'
-      'keys/@7/label': '戈'
-      'keys/@8/label': '人'
-      'keys/@9/label': '心'
-      'keys/@11/label': '日'
-      'keys/@12/label': '尸'
-      'keys/@13/label': '木'
-      'keys/@14/label': '火'
-      'keys/@15/label': '土'
-      'keys/@16/label': '竹'
-      'keys/@17/label': '十'
-      'keys/@18/label': '大'
-      'keys/@19/label': '中'
-      'keys/@22/label': '符'
-      'keys/@23/label': '難'
-      'keys/@24/label': '金'
-      'keys/@25/label': '女'
-      'keys/@26/label': '月'
-      'keys/@27/label': '弓'
-      'keys/@28/label': '一'
-    name: "倉頡五代鍵盤"
-  default:
-    __include: 'trime:/preset_keyboards/default'
+  # cangjie5:
+  #   __include: '/preset_keyboards/qwerty'
+  #   __patch:
+  #     'keys/@0/label': '手'
+  #     'keys/@1/label': '田'
+  #     'keys/@2/label': '水'
+  #     'keys/@3/label': '口'
+  #     'keys/@4/label': '廿'
+  #     'keys/@5/label': '卜'
+  #     'keys/@6/label': '山'
+  #     'keys/@7/label': '戈'
+  #     'keys/@8/label': '人'
+  #     'keys/@9/label': '心'
+  #     'keys/@11/label': '日'
+  #     'keys/@12/label': '尸'
+  #     'keys/@13/label': '木'
+  #     'keys/@14/label': '火'
+  #     'keys/@15/label': '土'
+  #     'keys/@16/label': '竹'
+  #     'keys/@17/label': '十'
+  #     'keys/@18/label': '大'
+  #     'keys/@19/label': '中'
+  #     'keys/@22/label': '符'
+  #     'keys/@23/label': '難'
+  #     'keys/@24/label': '金'
+  #     'keys/@25/label': '女'
+  #     'keys/@26/label': '月'
+  #     'keys/@27/label': '弓'
+  #     'keys/@28/label': '一'
+  #   name: "倉頡五代鍵盤"
+  # default_:
+  #   __include: 'trime:/preset_keyboards/default'
   edit:
     author: MISTER_CHAN
     keys: [{click: Tab}, {click: Home}, {click: Up}, {click: Page_Up}, {click: select_all},
       {click: undo}, {click: Left}, {click: Select}, {click: Right}, {click: redo},
       {click: Delete}, {click: End}, {click: Down}, {click: Page_Down}, {click: BackSpace},
-      {click: Keyboard_last_lock, long_click: Keyboard_us_104}, {click: cut}, {click: copy}, {click: paste}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
+      {click: Keyboard_last_lock}, {click: cut}, {click: copy}, {click: paste}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     name: "編輯"
     width: 20
-  letter:
-    __include: 'trime:/preset_keyboards/letter'
   mini:
     author: MISTER_CHAN
-    keys: []
+    keys: [{click: Keyboard_symbols, long_click: Keyboard_number, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     name: "精簡鍵盤"
     width: 10
   number:
@@ -525,20 +521,49 @@ preset_keyboards:
       {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_}]
     name: "預設數字"
     width: 20
-  qwerty:
+  default:
     ascii_mode: 0
     author: MISTER_CHAN
     keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
       {width: 5}, {click: a, long_click: '`', swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
       {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo, width: 15},
-      {click: Keyboard_symbols, long_click: Keyboard_number, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_left: Left, swipe_right: Right, width: 40}, {click: ., has_menu: liquid_keyboard_candidate}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+      {click: Keyboard_symbols, long_click: Keyboard_number, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     lock: true
     name: "預設26鍵"
     width: 10
-  qwerty0:
-    __include: 'trime:/preset_keyboards/qwerty0'
-  qwerty_:
-    __include: 'trime:/preset_keyboards/qwerty_'
+  # qwerty0:
+  #   __include: 'trime:/preset_keyboards/qwerty0'
+  # qwerty_:
+  #   __include: 'trime:/preset_keyboards/qwerty_'
+  # sg1pb3:
+  #   import_preset: qwerty
+  # sg1pb3_with_hints:
+  #   __include: 'preset_keyboards/qwerty'
+  #   __patch:
+  #     'keys/@0/hint': 'aau'
+  #     'keys/@1/hint': 'aai'
+  #     'keys/@3/hint': 'gweoui'
+  #     'keys/@4/hint': 'iu'
+  #     'keys/@5/hint': 'yuoe'
+  #     'keys/@6/hint': 'ou'
+  #     'keys/@7/hint': 'ei'
+  #     'keys/@9/hint': 'oi'
+  #     'keys/@11/hint': 'aa'
+  #     'keys/@12/hint': 'au'
+  #     'keys/@13/hint': 'ai'
+  #     'keys/@14/hint': 'aamp'
+  #     'keys/@15/hint': 'oengk'
+  #     'keys/@16/hint': 'yuunt'
+  #     'keys/@17/hint': 'eoont'
+  #     'keys/@18/hint': 'int'
+  #     'keys/@19/hint': 'imp'
+  #     'keys/@22/hint': 'aant'
+  #     'keys/@23/hint': 'ant'
+  #     'keys/@24/hint': 'aaangk'
+  #     'keys/@25/hint': 'amp'
+  #     'keys/@26/hint': 'iengk'
+  #     'keys/@27/hint': 'ungk'
+  #     'keys/@28/hint': 'ongk'
   symbols:
     ascii_mode: 0
     author: MISTER_CHAN
@@ -547,7 +572,7 @@ preset_keyboards:
       {click: "!"}, {click: '@'}, {click: "#"}, {click: "$"}, {click: "%"}, {click: "^"}, {click: "&"}, {click: "*"}, {click: "("}, {click: ")"},
       {click: "`"}, {click: "-"}, {click: "="}, {click: "["}, {click: "]"}, {click: '\'}, {click: ";"}, {click: "'"}, {click: "<"}, {click: "/"},
       {click: "~"}, {click: '_'}, {click: "+"}, {click: '{'}, {click: '}'}, {click: '|'}, {click: ':'}, {click: '"'}, {click: '>'}, {click: "?"},
-      {click: Keyboard_last_lock, width: 15}, {click: Keyboard_number}, {click: ","}, {click: space, key_text_size: 15, swipe_left: Left, swipe_right: Right, width: 30}, {click: .}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+      {click: Keyboard_last_lock, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number}, {click: ","}, {click: space, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     name: "符號"
     width: 10
   us_104:
@@ -561,7 +586,7 @@ preset_keyboards:
       {click: Control_L, width: 6.9}, {click: Meta_L, width: 6.9}, {click: Alt_L, width: 6.9}, {click: space, key_text_size: 16, width: 20}, {click: Alt_R, width: 6.9}, {click: Meta_R, width: 6.9}, {click: Keyboard_last_lock_, width: 6.9}, {click: Control_R, width: 6.9}, {click: Left}, {click: Down}, {click: Right}, {click: KP_0, width: 9.2}, {click: KP_Decimal}, {click: KP_Enter, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     landscape_keyboard: us_104_land
     lock: false
-    name: 104鍵
+    name: 美式104鍵
     width: 4.55
   us_104_land:
     author: MISTER_CHAN
@@ -574,7 +599,7 @@ preset_keyboards:
       {click: Control_L, width: 6.9}, {click: Meta_L, width: 6.9}, {click: Alt_L, width: 6.9}, {click: space, width: 20}, {click: Alt_R, width: 6.9}, {click: Meta_R, width: 6.9}, {click: Keyboard_last_lock_, width: 6.9}, {click: Control_R, width: 6.9}, {click: Left}, {click: Down}, {click: Right}, {click: KP_0, width: 9.2}, {click: KP_Decimal}, {click: KP_Enter, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     landscape_split_percent: 0
     lock: false
-    name: 104鍵
+    name: 美式104鍵
     width: 4.55
-  wubi86:
-    __include: '/preset_keyboards/qwerty'
+  # wubi86:
+  #   import_preset: qwerty
