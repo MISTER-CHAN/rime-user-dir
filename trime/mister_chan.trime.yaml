@@ -468,38 +468,38 @@ preset_keys:
   RLI: {functional: false, label: 'RLI', text: "\u2067"}
 
 preset_keyboards:
-  # cangjie5:
-  #   __include: '/preset_keyboards/qwerty'
-  #   __patch:
-  #     'keys/@0/label': '手'
-  #     'keys/@1/label': '田'
-  #     'keys/@2/label': '水'
-  #     'keys/@3/label': '口'
-  #     'keys/@4/label': '廿'
-  #     'keys/@5/label': '卜'
-  #     'keys/@6/label': '山'
-  #     'keys/@7/label': '戈'
-  #     'keys/@8/label': '人'
-  #     'keys/@9/label': '心'
-  #     'keys/@11/label': '日'
-  #     'keys/@12/label': '尸'
-  #     'keys/@13/label': '木'
-  #     'keys/@14/label': '火'
-  #     'keys/@15/label': '土'
-  #     'keys/@16/label': '竹'
-  #     'keys/@17/label': '十'
-  #     'keys/@18/label': '大'
-  #     'keys/@19/label': '中'
-  #     'keys/@22/label': '符'
-  #     'keys/@23/label': '難'
-  #     'keys/@24/label': '金'
-  #     'keys/@25/label': '女'
-  #     'keys/@26/label': '月'
-  #     'keys/@27/label': '弓'
-  #     'keys/@28/label': '一'
-  #   name: "倉頡五代鍵盤"
-  # default_:
-  #   __include: 'trime:/preset_keyboards/default'
+  cangjie5:
+    __include: '/preset_keyboards/qwerty' 
+    __patch:
+      'keys/@0/label': '手'
+      'keys/@1/label': '田'
+      'keys/@2/label': '水'
+      'keys/@3/label': '口'
+      'keys/@4/label': '廿'
+      'keys/@5/label': '卜'
+      'keys/@6/label': '山'
+      'keys/@7/label': '戈'
+      'keys/@8/label': '人'
+      'keys/@9/label': '心'
+      'keys/@11/label': '日'
+      'keys/@12/label': '尸'
+      'keys/@13/label': '木'
+      'keys/@14/label': '火'
+      'keys/@15/label': '土'
+      'keys/@16/label': '竹'
+      'keys/@17/label': '十'
+      'keys/@18/label': '大'
+      'keys/@19/label': '中'
+      'keys/@22/label': '符'
+      'keys/@23/label': '難'
+      'keys/@24/label': '金'
+      'keys/@25/label': '女'
+      'keys/@26/label': '月'
+      'keys/@27/label': '弓'
+      'keys/@28/label': '一'
+    name: "倉頡五代鍵盤"
+  default:
+    __include: 'trime:/preset_keyboards/default'
   edit:
     author: MISTER_CHAN
     keys: [{click: Tab}, {click: Home}, {click: Up}, {click: Page_Up}, {click: select_all},
@@ -508,6 +508,8 @@ preset_keyboards:
       {click: Keyboard_last_lock}, {click: cut}, {click: copy}, {click: paste}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     name: "編輯"
     width: 20
+  jyut6ping3:
+    import_preset: qwerty
   mini:
     author: MISTER_CHAN
     keys: [{click: Keyboard_symbols, long_click: Keyboard_number, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
@@ -521,7 +523,7 @@ preset_keyboards:
       {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_}]
     name: "預設數字"
     width: 20
-  default:
+  qwerty:
     ascii_mode: 0
     author: MISTER_CHAN
     keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
@@ -531,12 +533,12 @@ preset_keyboards:
     lock: true
     name: "預設26鍵"
     width: 10
-  # qwerty0:
-  #   __include: 'trime:/preset_keyboards/qwerty0'
-  # qwerty_:
-  #   __include: 'trime:/preset_keyboards/qwerty_'
-  # sg1pb3:
-  #   import_preset: qwerty
+  qwerty0:
+    __include: 'trime:/preset_keyboards/qwerty0'
+  qwerty_:
+    __include: 'trime:/preset_keyboards/qwerty_'
+  sg1pb3:
+    import_preset: qwerty
   # sg1pb3_with_hints:
   #   __include: 'preset_keyboards/qwerty'
   #   __patch:
@@ -601,5 +603,5 @@ preset_keyboards:
     lock: false
     name: 美式104鍵
     width: 4.55
-  # wubi86:
-  #   import_preset: qwerty
+  wubi86:
+    import_preset: qwerty
