@@ -1,0 +1,35 @@
+customization:
+  distribution_code_name: trime
+  distribution_version: "nightly-1-gd4a581d4"
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Wed Aug 21 23:46:41 2024"
+  rime_version: 1.11.2
+patch:
+  menu/page_size: 100
+  key_binder/bindings/+:
+    - { when: always, accept: Shift+0, send: parenright }
+    - { when: always, accept: Shift+1, send: exclam }
+    - { when: always, accept: Shift+2, send: at }
+    - { when: always, accept: Shift+3, send: numbersign }
+    - { when: always, accept: Shift+4, send: dollar }
+    - { when: always, accept: Shift+5, send: percent }
+    - { when: always, accept: Shift+6, send: asciicircum }
+    - { when: always, accept: Shift+7, send: ampersand }
+    - { when: always, accept: Shift+8, send: asterisk }
+    - { when: always, accept: Shift+9, send: parenleft }
+    - { when: always, accept: Shift+semicolon, send: colon }
+    - { when: always, accept: Shift+equal, send: plus }
+    - { when: always, accept: Shift+comma, send: less }
+    - { when: always, accept: Shift+minus, send: underscore }
+    - { when: always, accept: Shift+period, send: greater }
+    - { when: always, accept: Shift+slash, send: question }
+    - { when: always, accept: Shift+grave, send: asciitilde }
+    - { when: always, accept: Shift+bracketleft, send: braceleft }
+    - { when: always, accept: Shift+backslash, send: bar }
+    - { when: always, accept: Shift+bracketright, send: braceright }
+    - { when: always, accept: Shift+apostrophe, send: quotedbl }
+  schema_list:
+    - {schema: jyut6ping3}
+    - {schema: wubi86}
+    - {schema: cangjie5}
+    - {schema: sg1pb3}

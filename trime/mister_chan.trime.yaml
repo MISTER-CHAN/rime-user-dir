@@ -46,16 +46,16 @@ style:
     max_height: 400 #最大高度
     min_width: 0 #最小寬度
     min_height: 0 #最小高度
-    margin_x: 1 #水平邊距
+    margin_x: 1 #水平邊距 NOTE: margin_{x, y, bottom} 实际为 padding
     margin_y: 1 #豎直邊距
+    margin_bottom: 0 #底部边距 （用于适配特定背景图）
     line_spacing: 0 #候选詞的行間距(px)
     line_spacing_multiplier: 1.2 #候选詞的行間距(倍數)
-    spacing: 0 #與預編輯或邊緣的距離
     real_margin: 0 #屏幕左右边缘和悬浮窗之间的距离 TODO: 在 4.0 时给 real_margin 与 spacing 换一个更适合的名字
+    spacing: 0 #屏幕上下边缘或预编辑上下边缘和悬浮窗之间的距离
     round_corner: 0 #窗口圓角
     alpha: 0xFF #透明度(0-255)
     elevation: 0 #陰影(>=Android5.0)
-    background: #background.png #顏色或者backgrounds目錄下的圖片文件名
     movable: false #是否可移動窗口，或僅移動一次 true|false|once
   window: #懸浮窗口組件
     - {start: "", composition: "%s", end: "", letter_spacing: 0} #letter_spacing需要>=Android5.0。TODO: 不爲0時，會導致不換行的問題
@@ -332,7 +332,8 @@ preset_keys:
   BackSpace: {label: ⌫, repeatable: true, send: BackSpace, description: 删除}
   liquid_keyboard_key_BackSpace: {label: '⌫',  repeatable: true, send: BackSpace}
   Backspace_To_Home: {label: ' ', text: '{Shift+Home}{BackSpace}'}
-  space: {repeatable: true, functional: false, send: space}
+  space: {repeatable: false, functional: false, send: space}
+  space_: {repeatable: true, functional: false, send: space}
   liquid_keyboard_key_space: {label: '     ', repeatable: true, send: space}
   Escape: {label: '⎋', send: Escape}
   Retype: {label: '⌧', send: Escape}
@@ -512,7 +513,7 @@ preset_keyboards:
     import_preset: qwerty
   mini:
     author: MISTER_CHAN
-    keys: [{click: Keyboard_symbols, long_click: Keyboard_number, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+    keys: [{click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     name: "精簡鍵盤"
     width: 10
   number:
@@ -529,7 +530,7 @@ preset_keyboards:
     keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
       {width: 5}, {click: a, long_click: '`', swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
       {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo, width: 15},
-      {click: Keyboard_symbols, long_click: Keyboard_number, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     lock: true
     name: "預設26鍵"
     width: 10
@@ -567,14 +568,13 @@ preset_keyboards:
   #     'keys/@27/hint': 'ungk'
   #     'keys/@28/hint': 'ongk'
   symbols:
-    ascii_mode: 0
     author: MISTER_CHAN
     height: 40
     keys: [{click: 1}, {click: 2}, {click: 3}, {click: 4}, {click: 5}, {click: 6}, {click: 7}, {click: 8}, {click: 9}, {click: 0},
-      {click: "!"}, {click: '@'}, {click: "#"}, {click: "$"}, {click: "%"}, {click: "^"}, {click: "&"}, {click: "*"}, {click: "("}, {click: ")"},
+      {click: '!'}, {click: '@'}, {click: "#"}, {click: "$"}, {click: "%"}, {click: '^'}, {click: "&"}, {click: "*"}, {click: "("}, {click: ")"},
       {click: "`"}, {click: "-"}, {click: "="}, {click: "["}, {click: "]"}, {click: '\'}, {click: ";"}, {click: "'"}, {click: "<"}, {click: "/"},
-      {click: "~"}, {click: '_'}, {click: "+"}, {click: '{'}, {click: '}'}, {click: '|'}, {click: ':'}, {click: '"'}, {click: '>'}, {click: "?"},
-      {click: Keyboard_last_lock, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number}, {click: ","}, {click: space, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+      {click: "~"}, {click: '_'}, {click: "+"}, {click: '{'}, {click: '}'}, {click: '|'}, {click: ':'}, {click: '"'}, {click: '>'}, {click: '?'},
+      {click: Keyboard_last_lock, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number}, {click: ","}, {click: space_, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     name: "符號"
     width: 10
   us_104:
