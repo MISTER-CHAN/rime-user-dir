@@ -6,7 +6,7 @@
 # encoding: utf-8
 
 config_version: "3.0"
-name: 默认 #方案名稱
+name: MISTER_CHAN #方案名稱
 author: MISTER_CHAN #作者資訊
 
 style:
@@ -142,14 +142,14 @@ fallback_colors:
 #  long_text_back_color: key_back_color #长文本按键的背景(剪贴板）
 
 preset_color_schemes:
-  black:
+  dark:
     author: MISTER_CHAN
     back_color: 0x222222
     border_color: 0xFFFFFF
     candidate_separator_color: 0x444444
     candidate_text_color: 0xFFFFFF
     comment_text_color: 0xAAAAAA
-    hilited_back_color: 0x80222222
+    hilited_back_color: 0x80333333
     hilited_candidate_back_color: 0x555555
     hilited_candidate_text_color: 0xFFFFFF
     hilited_comment_text_color: 0xAAAAAA
@@ -161,21 +161,21 @@ preset_color_schemes:
     hilited_on_key_back_color: 0x555555
     hilited_on_key_text_color: 0xFFFFFF
     hilited_text_color: 0xFFFFFF
-    key_back_color: 0x222222
+    key_back_color: 0x333333
     key_border_color: 0xFFFFFF
     key_symbol_color: 0xAAAAAA
     key_text_color: 0xFFFFFF
     keyboard_back_color: 0x222222
     label_color: 0xFFFFFF
     name: "夜間"
-    off_key_back_color: 0x222222
+    off_key_back_color: 0x444444
     off_key_text_color: 0xFFFFFF
     on_key_back_color: 0x555555
     on_key_text_color: 0xFFFFFF
     preview_back_color: 0x333333
     preview_text_color: 0xFFFFFF
-    return_key_back_color: 0x5599FF
-    return_key_text_color: 0xFFFFFF
+    return_key_back_color: 0x99BBFF
+    return_key_text_color: 0x222222
     shadow_color: 0x000000
     text_back_color: 0x222222
     text_color: 0xFFFFFF
@@ -188,7 +188,7 @@ preset_color_schemes:
     candidate_separator_color: 0xCCCCCC #候選分割背景
     candidate_text_color: 0x000000 #候選文字
     comment_text_color: 0x666666 #提示
-    dark_scheme: '夜間'
+    dark_scheme: 'dark'
     hilited_back_color: 0x80EEEEEE #標明編碼背景
     hilited_candidate_back_color: 0xDDDDDD #標明候選背景
     hilited_candidate_text_color: 0x222222 #標明候選文字
@@ -213,7 +213,7 @@ preset_color_schemes:
     on_key_text_color: 0x000000 #按鍵打開狀態文字
     preview_back_color: 0xEEEEEE #按鍵提示背景
     preview_text_color: 0x000000 #按鍵提示文字
-    return_key_back_color: 0x4466CC
+    return_key_back_color: 0x0066CC
     return_key_text_color: 0xFFFFFF
     shadow_color: 0x000000 #按鍵文字陰影
     text_back_color: 0x80EEEEEE #編碼區背景
@@ -296,41 +296,42 @@ android_keys:
     toggle: 狀態
     send: 按鍵
     commit: 上屏
+
 preset_keys:
   # 安卓
   BRIGHTNESS_DOWN: {label: 亮度-, send: BRIGHTNESS_DOWN}
   BRIGHTNESS_UP: {label: 亮度+, send: BRIGHTNESS_UP}
-  CALCULATOR: {label: 计算器, send: CALCULATOR}
-  CALENDAR: {label: 日历, send: CALENDAR}
-  CONTACTS: {label: 通讯录, send: CONTACTS}
+  CALCULATOR: {label: 計算機, send: CALCULATOR}
+  CALENDAR: {label: 日曆, send: CALENDAR}
+  CONTACTS: {label: 電話簿, send: CONTACTS}
   ENVELOPE: {label: 信箱, send: ENVELOPE}
-  EXPLORER: {label: 浏览器, send: EXPLORER}
-  MUSIC: {label: 音乐, send: MUSIC}
-  POWER: {label: 电源, send: POWER}
-  SEARCH: {label: 搜索, send: Find}
-  SLEEP: {label:  SLEEP}
-  VOICE_ASSIST: {label: '🎙', send: VOICE_ASSIST}
+  EXPLORER: {label: 瀏覽器, send: EXPLORER}
+  MUSIC: {label: 音樂, send: MUSIC}
+  POWER: {label: 電源, send: POWER}
+  SEARCH: {label: 搜尋, send: Find}
+  SLEEP: {label: 休眠, send: SLEEP}
+  VOICE_ASSIST: {label: 語音, send: VOICE_ASSIST}
   VOLUME_DOWN: {label: 音量-, send: VOLUME_DOWN}
   VOLUME_UP: {label: 音量+, send: VOLUME_UP}
-  VOLUME_MUTE: {label: 静音, send: VOLUME_MUTE}
+  VOLUME_MUTE: {label: 靜音, send: VOLUME_MUTE}
   # 編輯
-  Shift_L: {label: '⇧', send: Shift_L, shift_lock: click}
+  Shift_L: {functional: true, label: '⇧', send: Shift_L, shift_lock: click}
   Select: {functional: false, label: '⇧', send: Shift_L, shift_lock: click}
-  Shift_R: {label: '⇧', send: Shift_R, shift_lock: click}
-  Shift_L_Long: {label: '⇧', send: Shift_L, shift_lock: long}
-  Shift_R_Long: {label: '⇧', send: Shift_R, shift_lock: long}
-  Control_L: {label: '⎈', send: Control_L, shift_lock: click}
-  Control_R: {label: '⎈', send: Control_R, shift_lock: click}
-  Alt_L: {label: '⎇', send: Alt_L, shift_lock: click}
-  Alt_R: {label: '⎇', send: Alt_R, shift_lock: click}
-  Meta_L: {label: '◆', send: Meta_L, shift_lock: click}
-  Meta_R: {label: '◆', send: Meta_R, shift_lock: click}
+  Shift_R: {functional: true, label: '⇧', send: Shift_R, shift_lock: click}
+  Shift_L_Long: {functional: true, label: '⇧', send: Shift_L, shift_lock: long}
+  Shift_R_Long: {functional: true, label: '⇧', send: Shift_R, shift_lock: long}
+  Control_L: {functional: true, label: '⎈', send: Control_L, shift_lock: click}
+  Control_R: {functional: true, label: '⎈', send: Control_R, shift_lock: click}
+  Alt_L: {functional: true, label: '⎇', send: Alt_L, shift_lock: click}
+  Alt_R: {functional: true, label: '⎇', send: Alt_R, shift_lock: click}
+  Meta_L: {functional: true, label: '◆', send: Meta_L, shift_lock: click}
+  Meta_R: {functional: true, label: '◆', send: Meta_R, shift_lock: click}
   Return: {label: enter_labels, send: Return, description: 回车}
   liquid_keyboard_key_Return: {label: ' ↵ ', send: Return}
   KP_Enter: {label: '⎆', send: KP_Enter}
   Hide: {label: 隱藏, send: BACK}
-  BackSpace: {label: ⌫, repeatable: true, send: BackSpace, description: 删除}
-  liquid_keyboard_key_BackSpace: {label: '⌫',  repeatable: true, send: BackSpace}
+  BackSpace: {label: ⌫, repeatable: true, functional: true, send: BackSpace, description: 删除}
+  liquid_keyboard_key_BackSpace: {label: '⌫',  repeatable: true, functional: true, send: BackSpace}
   Backspace_To_Home: {label: ' ', text: '{Shift+Home}{BackSpace}'}
   space: {repeatable: false, functional: false, send: space}
   space_: {repeatable: true, functional: false, send: space}
@@ -339,7 +340,7 @@ preset_keys:
   Retype: {label: '⌧', send: Escape}
   Home: {functional: false, label: '⇱', send: Home}
   Insert: {functional: false, label: '▶', send: Insert}
-  Delete: {label: '⌦', repeatable: true, send: Delete, description: 删除}
+  Delete: {functional: true, label: '⌦', repeatable: true, send: Delete, description: 删除}
   End: {functional: false, label: '⇲', send: End}
   Page_Up: {functional: false, label: '▲', send: Page_Up}
   Page_Down: {functional: false, label: '▼', send: Page_Down}
@@ -351,25 +352,24 @@ preset_keys:
   Shift_Down: {repeatable: true, send: Shift+Down}
   Shift_Up: {repeatable: true, send: Shift+Up}
   Shift_Right: {repeatable: true, send: Shift+Right}
-  select_all: {label: '☑', send: Control+a}
+  select_all: {functional: true, label: '☑', send: Control+a}
   Clear: {label: 清空, text: "{Control+a}{BackSpace}"} #全選並刪除
-  cut: {label: 剪下, send: Control+x}
+  cut: {functional: true, label: 剪下, send: Control+x}
   cut_all: {label: 全挪, text: "{Control+a}{Control+x}"} #全選並剪切
-  copy: {label: 複製, send: Control+c}
+  copy: {functional: true, label: 複製, send: Control+c}
   copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
-  paste: {label: 貼上, send: Control+v}
+  paste: {functional: true, label: 貼上, send: Control+v}
   paste_: {label: ' ', send: 'Control+v'}
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
-  redo: {label: '↷', send: Control+y} #>=Android 6.0
-  undo: {label: '↶', send: Control+z} #>=Android 6.0
-  Tab: {label: '⇥', send: Tab}
+  redo: {functional: true, label: '↷', send: Control+y} #>=Android 6.0
+  undo: {functional: true, label: '↶', send: Control+z} #>=Android 6.0
+  Tab: {functional: true, label: '⇥', send: Tab}
   delimiter: {functional: false, label: '‘詞', send: apostrophe, description: 分词}
   Sys_Req: {functional: false, label: '⎙', send: Sys_Req}
   Pause: {functional: false, label: "⎉", send: Pause}
   # rime組合鍵
   # F4: {label: 方案選單, send: F4}
-  Fourth: {label: ͢4, text: '{Right}{Right}{Right}{space}'}
   BackToPreviousSyllable: {label: '▕⌫　', send: Control+BackSpace}
   BackToSentence: {label: 刪句, send: Control+Shift+BackSpace}
   CommitRawInput: {label: 編碼, send: Control+Return}
@@ -381,6 +381,7 @@ preset_keys:
   DelSecondChar: {text: '{space}{Left}{Left}{Delete}{Right}'}
   Second: {label: ͢2, text: '{Right}{space}'}
   Third: {label: ͢3, text: '{Right}{Right}{space}'}
+  Fourth: {label: ͢4, text: '{Right}{Right}{Right}{space}'}
   # rime狀態
   Caps_Lock: {label: '⇬', send: Caps_Lock, shift_lock: click}
   Num_Lock: {functional: false, label: '⇭', send: Num_Lock, shift_lock: click}
@@ -391,16 +392,16 @@ preset_keys:
   Charset_switch: {toggle: extended_charset, send: Mode_switch, states: [ 常用, 增廣 ]}
   Punct_switch: {toggle: ascii_punct, send: Mode_switch, states: [ 。，, ．， ]}
   #切换键盘
-  Keyboard_default: {label: '🡨', send: Eisu_toggle, select: .default}
-  Keyboard_edit: {label: ' ', send: Eisu_toggle, select: edit}
-  Keyboard_number: {label: '123', send: Eisu_toggle, select: number}
-  Keyboard_last: {label: '🡨', send: Eisu_toggle, select: .last}
-  Keyboard_last_lock: {label: '🡨', send: Eisu_toggle, select: .last_lock}
-  Keyboard_last_lock_: {label: '⮌', send: Eisu_toggle, select: .last_lock}
-  Keyboard_letter: {label: 'ABC', send: Eisu_toggle, select: default}
-  Keyboard_symbols: {label: '!@#', send: Eisu_toggle, select: symbols}
-  Keyboard_switch: {label: '⌨', send: Eisu_toggle, select: .next}
-  Keyboard_us_104: {label: ' ', send: Eisu_toggle, select: us_104}
+  Keyboard_default: {label: '🡨', functional: true, send: Eisu_toggle, select: .default}
+  Keyboard_edit: {label: ' ', functional: true, send: Eisu_toggle, select: edit}
+  Keyboard_number: {label: '123', functional: true, send: Eisu_toggle, select: number}
+  Keyboard_last: {label: '🡨', functional: true, send: Eisu_toggle, select: .last}
+  Keyboard_last_lock: {label: '🡨', functional: true, send: Eisu_toggle, select: .last_lock}
+  Keyboard_last_lock_: {label: '⮌', functional: true, send: Eisu_toggle, select: .last_lock}
+  Keyboard_letter: {label: 'ABC', functional: true, send: Eisu_toggle, select: default}
+  Keyboard_symbols: {label: '!@#', functional: true, send: Eisu_toggle, select: symbols}
+  Keyboard_switch: {label: '⌨', functional: true, send: Eisu_toggle, select: .next}
+  Keyboard_us_104: {label: ' ', functional: true, send: Eisu_toggle, select: us_104}
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
   liquid_keyboard_candidate: { label: ' ', send: function, command: liquid_keyboard, option: "▼" }
   liquid_keyboard_exit: {label: '🡨', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
@@ -428,22 +429,25 @@ preset_keys:
   Comment_switch: {toggle: _hide_comment, send: Mode_switch, states: [ 有註釋, 無註釋]}
   Hint_switch: {toggle: _hide_key_hint, send: Mode_switch, states: [ 有助記, 無助記]}
   # trime命令
-  Date: {label: 日期, send: function, command: date, option: "yyyy-MM-dd"}
-  ChineseDate: {label: 农历, send: function, command: date, option: "zh_CN@calendar=chinese"} #農曆等日期(>=Android 7.0)：date 語言@calendar=曆法 格式。具體參見https://developer.android.com/reference/android/icu/util/Calendar.html
-  Time: {label: 时间, send: function, command: date, option: "HH:mm:ss"} #時間： date 格式
-  Now: {command: date, functional: false, label: "🕒", option: "yyyy-MM-dd H:mm:ss", send: function}
-  TrimeApp: {label: 同文, send: function, command: run, option: "com.osfans.trime"} #運行程序: run 包名
-  TrimeCmp: {label: 同文设置, send: function, command: run, option: "com.osfans.trime/.Pref"} #運行程序指定組件: run 包名/組件名
-  Homepage: {label: 同文主页, send: function, command: run, option: "https://github.com/osfans/trime"} #查看網頁: run 網址
-  Wiki: {label: 維基, send: function, command: run, option: "https://zh.wikipedia.org/wiki/%s"} #搜索網頁: %s或者%1$s爲當前字符
-  Google: {label: 谷歌, send: function, command: run, option: "https://www.google.com/search?q=%s"} #搜索網頁: %s或者%1$s爲當前字符
-  MoeDict: {label: 萌典, send: function, command: run, option: "https://www.moedict.tw/%3$s"} #搜索網頁: %3$s爲光標前字符
-  Baidu: {label: 百度搜索, send: function, command: run, option: "https://www.baidu.com/s?wd=%4$s"} #搜索網頁: %4s爲光標前所有字符
-  Zdic: {label: 漢典, send: function, command: run, option: "http://www.zdic.net/sousuo/?q=%1$s"} #搜索網頁: %s或者%1$s爲當前字符
-  Zdic2: {label: 漢典, send: function, command: run, option: "http://www.zdic.net/sousuo/?q=%2$s"} #搜索網頁: %2$s爲當前輸入的編碼
-  WebSearch: {label: 搜索网页, send: function, command: web_search, option: "%4$s"} #搜索，其他view、dial、edit、search等intent，參考安卓的intent文檔：https://developer.android.com/reference/android/content/Intent.html
-  Deploy: {label: 部署, send: function, command: broadcast, option: "com.osfans.trime.deploy"}
-  Sync: {label: 同步, send: function, command: broadcast, option: "com.osfans.trime.sync"}
+  Date: {label: 日期, command: date, option: "yyyy-MM-dd"}
+  ChineseDate: {label: 農曆, command: date, option: "zh_CN@calendar=chinese"} #農曆等日期(>=Android 7.0)：date 語言@calendar=曆法 格式。具體參見https://developer.android.com/reference/android/icu/util/Calendar.html
+  Time: {label: 時間, command: date, option: "HH:mm:ss"} #時間： date 格式
+  TrimeApp: {label: 同文, command: run, option: "com.osfans.trime"} #運行程序: run 包名
+  TrimeCmp: {label: 同文組件, command: run, option: "com.osfans.trime/.Pref"} #運行程序指定組件: run 包名/組件名
+  Homepage: {label: 同文主頁, command: run, option: "https://github.com/osfans/trime"} #查看網頁: run 網址
+  CommitHomepage: {label: 同文網址, commit: https://github.com/osfans/trime} #直接上屏
+  Wiki: {label: 維基, command: run, option: "https://zh.wikipedia.org/wiki/%s"} #搜索網頁: %s或者%1$s爲當前字符
+  Google: {label: 谷歌, command: run, option: "https://www.google.com/search?q=%s"} #搜索網頁: %s或者%1$s爲當前字符
+  MoeDict: {label: 萌典, command: run, option: "https://www.moedict.tw/%3$s"} #搜索網頁: %3$s爲光標前字符
+  Baidu: {label: 百度搜索, command: run, option: "https://www.baidu.com/s?wd=%4$s"} #搜索網頁: %4s爲光標前所有字符
+  Zdic: {label: 漢典, command: run, option: "http://www.zdic.net/sousuo/?q=%1$s"} #搜索網頁: %s或者%1$s爲當前字符
+  Zdic2: {label: 漢典, command: run, option: "http://www.zdic.net/sousuo/?q=%2$s"} #搜索網頁: %2$s爲當前輸入的編碼
+  WebSearch: {label: 搜索網頁, command: web_search, option: "%4$s"} #搜索，其他view、dial、edit、search等intent，參考安卓的intent文檔：https://developer.android.com/reference/android/content/Intent.html
+  Search: {label: 搜索, command: search, option: "%1$s"} #搜索短信、字典等
+  Share: {label: 分享, command: send, option: "%s"} #分享指定文本: %s或者%1$s爲當前字符
+  Deploy: {label: 部署, command: broadcast, option: "com.osfans.trime.deploy"}
+  Sync: {label: 同步, command: broadcast, option: "com.osfans.trime.sync"}
+  RepeatCommit: { label: 重复,  command: commit, option: "%1$s" } #重复输入刚上屏的内容
   # 控制字符
   Table: {functional: false, label: '製表', text: "\t"}
   LF: {functional: false, label: '饋行', commit: '\n'}
