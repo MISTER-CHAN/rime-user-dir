@@ -25,10 +25,10 @@ style:
   comment_text_size: 15 #編碼提示字號
   hanb_font: mcui_extbcdef.ttf #擴充字型
   horizontal: true #水平模式
-  horizontal_gap: 6 #鍵水平間距
+  horizontal_gap: 12 #鍵水平間距
   keyboard_padding: 0 #竖屏模式下，屏幕左右两侧与键盘的距离（曲面屏减少误触）
   keyboard_padding_left: 0 #竖屏屏模式下，左手键盘布局，屏幕左侧与键盘的距离
-  keyboard_padding_right: 40 #竖屏屏模式下，左手键盘布局，屏幕右侧与键盘的距离
+  keyboard_padding_right: 0 #竖屏屏模式下，左手键盘布局，屏幕右侧与键盘的距离
   keyboard_padding_bottom: 0 #竖屏模式下，屏幕下边缘与键盘的距离（避免误触发全面屏手势）
   keyboard_padding_land: 40 #横屏模式下，屏幕左右两侧与键盘的距离（避免横屏按键过度拉伸变形）
   keyboard_padding_land_bottom: 0 #横屏模式下，屏幕下侧与键盘的距离
@@ -398,7 +398,7 @@ preset_keys:
   Keyboard_last: {label: '🡨', functional: true, send: Eisu_toggle, select: .last}
   Keyboard_last_lock: {label: '🡨', functional: true, send: Eisu_toggle, select: .last_lock}
   Keyboard_last_lock_: {label: '⮌', functional: true, send: Eisu_toggle, select: .last_lock}
-  Keyboard_letter: {label: 'ABC', functional: true, send: Eisu_toggle, select: default}
+  Keyboard_qwerty_land: {label: ' ', functional: true, send: Eisu_toggle, select: qwerty_land}
   Keyboard_symbols: {label: '!@#', functional: true, send: Eisu_toggle, select: symbols}
   Keyboard_switch: {label: '⌨', functional: true, send: Eisu_toggle, select: .next}
   Keyboard_us_104: {label: ' ', functional: true, send: Eisu_toggle, select: us_104}
@@ -507,12 +507,11 @@ preset_keyboards:
     __include: 'trime:/preset_keyboards/default'
   edit:
     author: MISTER_CHAN
-    keys: [{click: Tab, key_back_color: off_key_back_color}, {click: Home}, {click: Up}, {click: Page_Up}, {click: select_all, key_back_color: off_key_back_color},
-      {click: undo, key_back_color: off_key_back_color}, {click: Left}, {click: Select}, {click: Right}, {click: redo, key_back_color: off_key_back_color},
-      {click: Delete, key_back_color: off_key_back_color}, {click: End}, {click: Down}, {click: Page_Down}, {click: BackSpace, key_back_color: off_key_back_color},
-      {click: Keyboard_last_lock, key_back_color: off_key_back_color}, {click: cut, key_back_color: off_key_back_color}, {click: copy, key_back_color: off_key_back_color}, {click: paste, key_back_color: off_key_back_color}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
+    keys: [{click: Tab}, {click: Home}, {click: Up}, {click: Page_Up}, {click: select_all},
+      {click: undo}, {click: Left}, {click: Select}, {click: Right}, {click: redo},
+      {click: Delete}, {click: End}, {click: Down}, {click: Page_Down}, {click: BackSpace},
+      {click: Keyboard_last_lock}, {click: cut}, {click: copy}, {click: paste}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     name: "編輯"
-    vertical_gap: 12
     width: 20
   jyut6ping3:
     import_preset: qwerty
@@ -525,22 +524,36 @@ preset_keyboards:
     author: MISTER_CHAN
     keys: [{click: "+"}, {click: 1, long_click: Home}, {click: 2, long_click: Up}, {click: 3, long_click: Page_Up}, {click: "*"},
       {click: "-"}, {click: 4, long_click: Left}, {click: 5, swipe_left: Left, swipe_right: Right}, {click: 6, long_click: Right}, {click: "#"},
-      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace, key_back_color: off_key_back_color, swipe_left: Backspace_To_Home, swipe_right: undo},
-      {click: Keyboard_last_lock, key_back_color: off_key_back_color}, {click: Keyboard_symbols, key_back_color: off_key_back_color}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_}]
+      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo},
+      {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_}]
     name: "預設數字"
-    vertical_gap: 12
     width: 20
   qwerty:
     ascii_mode: 0
     author: MISTER_CHAN
     keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
       {width: 5}, {click: a, long_click: '`', swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
-      {click: Shift_L, composing: delimiter, key_back_color: off_key_back_color, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m}, {click: BackSpace, key_back_color: off_key_back_color, swipe_left: Backspace_To_Home, swipe_right: undo, width: 15},
-      {click: Keyboard_number, key_back_color: off_key_back_color, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_faces}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+      {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m, long_click: Keyboard_qwerty_land}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo, width: 15},
+      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_faces}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
+    landscape_keyboard: qwerty_land
     lock: true
     name: "預設26鍵"
-    vertical_gap: 12
     width: 10
+  qwerty_land:
+    __include: 'preset_keyboards/qwerty'
+    __patch:
+      'keys/@after 9': {width: 18}
+      'keys/@10/width': 4.1
+      'keys/@20/width': 22.1
+      'keys/@21/width': 12.3
+      'keys/@28/long_click': Keyboard_default
+      'keys/@29/width': 12.3
+      'keys/@after 29': {width: 18}
+      'keys/@30/width': 12.3
+      'keys/@33/width': 32.8
+      'keys/@35/width': 12.3
+      'keys/@after 36': {width: 18}
+      width: 8.2
   qwerty0:
     __include: 'trime:/preset_keyboards/qwerty0'
   qwerty_:
@@ -583,7 +596,6 @@ preset_keyboards:
       {click: "~"}, {click: '_'}, {click: "+"}, {click: '{'}, {click: '}'}, {click: '|'}, {click: ':'}, {click: '"'}, {click: '>'}, {click: '?'},
       {click: Keyboard_last_lock, key_back_color: off_key_back_color, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number, key_back_color: off_key_back_color}, {click: ","}, {click: space_, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, key_back_color: off_key_back_color, swipe_left: Backspace_To_Home, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, long_click: paste_, width: 15}]
     name: "符號"
-    vertical_gap: 12
     width: 10
   us_104:
     author: MISTER_CHAN
@@ -597,7 +609,6 @@ preset_keyboards:
     landscape_keyboard: us_104_land
     lock: false
     name: 美式104鍵
-    vertical_gap: 12
     width: 4.55
   us_104_land:
     author: MISTER_CHAN
@@ -611,7 +622,6 @@ preset_keyboards:
     landscape_split_percent: 0
     lock: false
     name: 美式104鍵
-    vertical_gap: 12
     width: 4.55
   wubi86:
     import_preset: qwerty
