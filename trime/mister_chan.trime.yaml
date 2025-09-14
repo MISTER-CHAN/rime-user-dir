@@ -499,6 +499,7 @@ tool_bar:
         vertical_inset: 0
       foreground:
         style: "ic@chevron_down"
+        font_size: 20
       action: Hide
     - background:
         type: rectangle
@@ -514,6 +515,7 @@ tool_bar:
         vertical_inset: 0
       foreground:
         option_styles: ["ic@brightness_1", "ic@brightness_2"]
+        font_size: 20
       action: Zenkaku_Hankaku
     - background:
         type: rectangle
@@ -529,6 +531,7 @@ tool_bar:
         vertical_inset: 0
       foreground:
         style: "ic@undo"
+        font_size: 20
       action: undo
 
 preset_keyboards:
