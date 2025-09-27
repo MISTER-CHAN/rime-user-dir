@@ -1,0 +1,24 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: letter
+  name: 字母
+  version: '1.0'
+  author:
+    - MISTER_CHAN
+  description: |
+    字母
+
+switches:
+  - name: ascii_mode
+    reset: 1
+  - name: full_shape
+    states: [ 半角, 全角 ]
+
+engine:
+  processors:
+    - key_binder
+
+key_binder:
+  import_preset: default
