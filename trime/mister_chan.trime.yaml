@@ -266,7 +266,7 @@ liquid_keyboard:
   margin_x: 1 # 左右按键间隙的1/2
   fixed_key_bar: # 固定按键条
     position: bottom # 摆放位置（在滚动区域的……） top|bottom|left|right
-    keys: [liquid_keyboard_key_exit, liquid_keyboard_key_space, liquid_keyboard_key_BackSpace, liquid_keyboard_key_Return] # 按键（显示名称为对应的label，不能放太多）
+    keys: [liquid_keyboard_key_exit, liquid_keyboard_key_space, liquid_keyboard_key_backspace, liquid_keyboard_key_return] # 按键（显示名称为对应的label，不能放太多）
   keyboards: [bl_l1s, faces, hands, clipboard, draft, collection]
   bl_l1s: # Basic Latin and Latin-1 Supplement
     name: ' !§ '
@@ -361,15 +361,11 @@ preset_keys:
   Meta_L: {functional: true, label: '◆', send: Meta_L, shift_lock: click}
   Meta_R: {functional: true, label: '◆', send: Meta_R, shift_lock: click}
   Return: {label: enter_labels, send: Return, description: 回车}
-  liquid_keyboard_key_Return: {label: ' ↵   ', send: Return}
   KP_Enter: {label: '⎆', send: KP_Enter}
   Hide: {label: 隱藏, send: BACK}
   BackSpace: {label: ⌫, repeatable: true, functional: true, send: BackSpace, description: 删除}
-  liquid_keyboard_key_BackSpace: {label: ' ⌫ ',  repeatable: true, functional: true, send: BackSpace}
-  Backspace_To_Home: {label: ' ', text: '{Shift+Home}{BackSpace}'}
   space: {repeatable: false, functional: false, send: space}
   space_: {repeatable: true, functional: false, send: space}
-  liquid_keyboard_key_space: {label: '　　　　　　　　　　', repeatable: true, send: space}
   Escape: {label: '⎋', send: Escape}
   Retype: {label: '⌧', send: Escape}
   Home: {functional: false, label: '⇱', send: Home}
@@ -393,7 +389,6 @@ preset_keys:
   copy: {functional: true, label: 複製, send: Control+c}
   copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
   paste: {functional: true, label: 貼上, send: Control+v}
-  paste_: {label: ' ', send: 'Control+v'}
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
   redo: {functional: true, label: '↷', send: Control+y} #>=Android 6.0
@@ -402,13 +397,17 @@ preset_keys:
   delimiter: {functional: false, send: apostrophe, description: 分词}
   Sys_Req: {functional: false, label: '⎙', send: Sys_Req}
   Pause: {functional: false, label: "⎉", send: Pause}
+  liquid_keyboard_key_exit: {label: '   🡨 ', functional: true, send: function, command: liquid_keyboard, option: "-1"}
+  liquid_keyboard_key_space: {label: '　　　　　　　　　　', repeatable: true, send: space}
+  liquid_keyboard_key_backspace: {label: ' ⌫ ',  repeatable: true, functional: true, send: BackSpace}
+  liquid_keyboard_key_return: {label: ' ↵   ', functional: true, send: Return}
   # rime組合鍵
   # F4: {label: 方案選單, send: F4}
   BackToPreviousSyllable: {label: '▕⌫　', send: Control+BackSpace}
   BackToSentence: {label: 刪句, send: Control+Shift+BackSpace}
+  BackspaceToHome: {label: ' ', text: '{Shift+Home}{BackSpace}'}
   CommitRawInput: {label: 編碼, send: Control+Return}
   CommitScriptText: {label: 編碼, send: Shift+Return}
-  CommitScriptText_: {label: '↵', send: Shift+Return}
   CommitComment: {label: 編碼, send: Control+Shift+Return}
   DeleteCandidate: {label: '☆̸', send: Control+Delete}
   DelFirstChar: {text: '{space}{Left}{Delete}'}
@@ -439,7 +438,6 @@ preset_keys:
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
   liquid_keyboard_candidate: { label: ' ', send: function, command: liquid_keyboard, option: "▼" }
   liquid_keyboard_exit: {label: '🡨', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
-  liquid_keyboard_key_exit: {label: '   🡨 ', send: function, command: liquid_keyboard, option: "-1"}
   liquid_keyboard_faces: { label: 🙂, send: function, command: liquid_keyboard, option: "🙂" }
   liquid_keyboard_clipboard: { label: '📋', send: function, command: liquid_keyboard, option: "📋" }
   menu_keyboard: { label: 菜单, send: function, command: menu_keyboard }
@@ -455,9 +453,9 @@ preset_keys:
   Color_switch: {label: 配色, send: PROG_RED}
   Help: {functional: false, label: '?', send: Help}
   Info: {functional: false, label: 'ⓘ', send: INFO}
-  Menu: {label: ' ', send: Menu}
-  Settings: {functional: false, label: '⚙', send: SETTINGS}
-  Color_settings: {functional: false, label: '☀☽', send: SETTINGS, option: "color"}
+  Menu: {label: '菜單', send: Menu}
+  Settings: {label: '⚙', send: SETTINGS}
+  Color_settings: {label: '☀☽', send: SETTINGS, option: "color"}
   Theme_settings: {label: 主题, send: SETTINGS, option: "theme"}
   Schema_settings: {label: 方案, send: SETTINGS, option: "schema"}
   Candidate_switch: {toggle: _hide_candidate, send: Mode_switch, states: [ 有候選, 無候選]}
@@ -484,28 +482,28 @@ preset_keys:
   Sync: {label: 同步, command: broadcast, option: "com.osfans.trime.sync"}
   RepeatCommit: { label: 重复,  command: commit, option: "%1$s" } #重复输入刚上屏的内容
   # 控制字符
-  Table: {functional: false, label: '製表', text: "\t"}
-  LF: {functional: false, label: '饋行', commit: '\n'}
-  EnSp: {functional: false, label: 'En', text: ' '}
-  EmSp: {functional: false, label: 'Em', text: ' '}
-  TPES: {functional: false, label: '¹/₃', text: ' '}
-  FPES: {functional: false, label: '¹/₄', text: ' '}
-  SPES: {functional: false, label: '¹/₆', text: ' '}
-  FS: {functional: false, label: '數字', text: ' '}
-  PS: {functional: false, label: '標點', text: ' '}
-  ZWS: {functional: false, label: '零寬', text: '​'}
-  LRM: {functional: false, label: '左至右標誌', text: '‎'}
-  RLM: {functional: false, label: '右至左標誌', text: '‏'}
-  LRO: {functional: false, label: '左至右強制', text: '‭'}
-  RLO: {functional: false, label: '右至左強制', text: '‮'}
-  PDF: {functional: false, label: '退出方向化', text: '‬'}
-  WJ: {functional: false, label: 'WJ', text: "\u2060"}
-  FA: {functional: false, label: 'f()', text: "\u2061"}
-  IT: {functional: false, label: '×', text: "\u2062"}
-  IS: {functional: false, label: ',', text: "\u2063"}
-  IP: {functional: false, label: '+', text: "\u2064"}
-  LRI: {functional: false, label: 'LRI', text: "\u2066"}
-  RLI: {functional: false, label: 'RLI', text: "\u2067"}
+  Table: {functional: false, label: '製表', commit: "\t"}
+  LF: {functional: false, label: '饋行', commit: "\n"}
+  EnSp: {functional: false, label: 'En', commit: ' '}
+  EmSp: {functional: false, label: 'Em', commit: ' '}
+  TPES: {functional: false, label: '¹/₃', commit: ' '}
+  FPES: {functional: false, label: '¹/₄', commit: ' '}
+  SPES: {functional: false, label: '¹/₆', commit: ' '}
+  FS: {functional: false, label: '數字', commit: ' '}
+  PS: {functional: false, label: '標點', commit: ' '}
+  ZWS: {functional: false, label: '零寬', commit: '​'}
+  LRM: {functional: false, label: '左至右標誌', commit: '‎'}
+  RLM: {functional: false, label: '右至左標誌', commit: '‏'}
+  LRO: {functional: false, label: '左至右強制', commit: '‭'}
+  RLO: {functional: false, label: '右至左強制', commit: '‮'}
+  PDF: {functional: false, label: '退出方向化', commit: '‬'}
+  WJ: {functional: false, label: 'WJ', commit: "\u2060"}
+  FA: {functional: false, label: 'f()', commit: "\u2061"}
+  IT: {functional: false, label: '×', commit: "\u2062"}
+  IS: {functional: false, label: ',', commit: "\u2063"}
+  IP: {functional: false, label: '+', commit: "\u2064"}
+  LRI: {functional: false, label: 'LRI', commit: "\u2066"}
+  RLI: {functional: false, label: 'RLI', commit: "\u2067"}
 
 tool_bar:
   button_spacing: 5 # 按钮间距
@@ -631,7 +629,7 @@ preset_keyboards:
     author: MISTER_CHAN
     keys: [{click: "+"}, {click: 1, long_click: Home}, {click: 2, long_click: Up}, {click: 3, long_click: Page_Up}, {click: "*"},
       {click: "-"}, {click: 4, long_click: Left}, {click: 5, swipe_left: Left, swipe_right: Right}, {click: 6, long_click: Right}, {click: "#"},
-      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo},
+      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace, swipe_left: BackspaceToHome, swipe_right: undo},
       {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     name: "預設數字"
     reset_ascii_mode: false
@@ -641,8 +639,8 @@ preset_keyboards:
     author: MISTER_CHAN
     keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
       {width: 5}, {click: a, long_click: '`', swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
-      {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m, long_click: Keyboard_qwerty_land}, {click: BackSpace, swipe_left: Backspace_To_Home, swipe_right: undo, width: 15},
-      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_faces}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+      {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m, long_click: Keyboard_qwerty_land}, {click: BackSpace, swipe_left: BackspaceToHome, swipe_right: undo, width: 15},
+      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_faces}, {click: Schema_switch, long_click: Menu, label_symbol: ' '}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, composing: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
     landscape_keyboard: qwerty_land
     lock: true
     name: "預設26鍵"
@@ -704,7 +702,7 @@ preset_keyboards:
       {click: '!'}, {click: '@'}, {click: "#"}, {click: "$"}, {click: "%"}, {click: '^'}, {click: "&"}, {click: "*"}, {click: "("}, {click: ")"},
       {click: "`"}, {click: "-"}, {click: "="}, {click: "["}, {click: "]"}, {click: '\'}, {click: ";"}, {click: "'"}, {click: "<"}, {click: "/"},
       {click: "~"}, {click: '_'}, {click: "+"}, {click: '{'}, {click: '}'}, {click: '|'}, {click: ':'}, {click: '"'}, {click: '>'}, {click: '?'},
-      {click: Keyboard_last_lock, key_back_color: off_key_back_color, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number, key_back_color: off_key_back_color}, {click: ","}, {click: space_, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, key_back_color: off_key_back_color, swipe_left: Backspace_To_Home, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+      {click: Keyboard_last_lock, key_back_color: off_key_back_color, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number, key_back_color: off_key_back_color}, {click: ","}, {click: space_, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, key_back_color: off_key_back_color, swipe_left: BackspaceToHome, swipe_right: undo}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
     name: "符號"
     reset_ascii_mode: false
     width: 10

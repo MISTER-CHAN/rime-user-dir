@@ -1,7 +1,7 @@
 patch:
   switches/@3:
-    options: [ tradition, trad_graph, simplification ]
-    reset: 1
+    options: [ noop, trad_graph, simplification ]
+    #reset: 1
     states: [ '漢字', '漢字（傳承字形）', '汉字' ]
   engine/filters/@before_0: simplifier@trad_graph
 # engine/filters/@before 0: simplifier@simp_trad_graph
