@@ -9,24 +9,32 @@ config_version: "3.0"
 name: MISTER_CHAN #方案名稱
 author: MISTER_CHAN #作者資訊
 
+fonts: &fonts
+  - 'NotoEmoji-Regular.ttf'
+  - 'NotoColorEmoji-Regular.ttf'
+  - 'NotoSansMath-Regular.ttf'
+  - 'NotoSansSymbols-Regular.ttf'
+  - 'NotoSansSymbols2-Regular.ttf'
+  - 'MISTER_CHAN_CJK.ttf'
+
 style:
   auto_caps: false #自動句首大寫:true|false|ascii
 # background_dim_amount: 0.5
   candidate_border: 0
   candidate_border_round: 0
-  candidate_font: [noto-emoji.ttf, noto-symbols.ttf, noto-symbols-2.ttf, noto-math.ttf, mc.ttf] #候選字型
+  candidate_font: *fonts #候選字型
   candidate_padding: 12 #候選項內邊距
   candidate_spacing: 0.5 #候選間距
   candidate_text_size: 20 #候選字號
 # candidate_use_cursor: true #高亮候選項
   candidate_view_height: 40 #候選區高度
 # color_scheme: default #配色方案
-  comment_font: [noto-emoji.ttf, noto-symbols.ttf, noto-symbols-2.ttf, noto-math.ttf, mc.ttf] #編碼提示字型
+  comment_font: *fonts #編碼提示字型
   comment_height: 0 #編碼提示區高度
   comment_on_top: false #編碼提示在上方或右側
   comment_position: right
   comment_text_size: 15 #編碼提示字號
-  hanb_font: mcui_extbcdef.ttf #擴充字型
+  hanb_font: ['Jigmo2.ttf', 'Jigmo3.ttf'] #擴充字型
   horizontal: true #水平模式
   horizontal_gap: 12 #鍵水平間距
   keyboard_padding: 0 #竖屏模式下，屏幕左右两侧与键盘的距离（曲面屏减少误触）
@@ -62,7 +70,7 @@ style:
 #   movable: false #是否可移動窗口，或僅移動一次 true|false|once
 # window: #懸浮窗口組件
 #   - {start: "", composition: "%s", end: "", letter_spacing: 0} #letter_spacing需要>=Android5.0。TODO: 不爲0時，會導致不換行的問題
-  key_font: [noto-emoji.ttf, noto-symbols.ttf, noto-symbols-2.ttf, noto-math.ttf, mc.ttf] #鍵盤字型
+  key_font: *fonts #鍵盤字型
   key_border: 0
   key_height: 50 #鍵高
   key_long_text_size: 20 #長標籤字號
@@ -78,13 +86,13 @@ style:
   key_width: 10.0 #鍵寬，佔螢幕寬的百分比
 # keyboards: [] #鍵盤配置：自動鍵盤、字母、數字、符號
   label_text_size: 22 #標籤字號
-  label_font: mc.ttf #編標籤字型
-  latin_font: mc.ttf #西文字型
+  label_font: 'MISTER_CHAN_CJK.ttf' #編標籤字型
+  latin_font: 'MISTER_CHAN_CJK.ttf' #西文字型
 # latin_locale: en_US #西文語言
 # locale: zh_HK #預設語言 zh_TW,zh_CN,zh_HK,""
   keyboard_height: 240 #锁定键盘高度，避免切换时键盘高度变化而造成闪烁
   keyboard_height_land: 200 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
-  preview_font: mc.ttf #按鍵提示字型
+  preview_font: 'MISTER_CHAN_CJK.ttf' #按鍵提示字型
   preview_height: 60 #按鍵提示高度
   preview_offset: 0 #按鍵提示縱向偏移
   preview_text_size: 40 #按鍵提示字號
@@ -93,14 +101,14 @@ style:
   round_corner: 0 #按鍵圓角半徑
   shadow_radius: 0.0 #按鍵陰影半徑
 # speech_opencc_config: s2t.json #語音輸入簡繁轉換
-  symbol_font: [noto-emoji.ttf, noto-symbols.ttf, noto-symbols-2.ttf, noto-math.ttf, mc.ttf] #符號字型
+  symbol_font: *fonts #符號字型
   symbol_text_size: 10 #符號字號
-  text_font: mc.ttf #編碼字型
+  text_font: 'MISTER_CHAN_CJK.ttf' #編碼字型
 # text_height: 22 #編碼區高度
 # text_size: 16 #編碼區字號
   vertical_correction: 0
   vertical_gap: 12 #鍵盤行距
-# long_text_font: mc.ttf #剪贴板等可能包含大段文本使用的字体
+# long_text_font: 'MISTER_CHAN_CJK.ttf' #剪贴板等可能包含大段文本使用的字体
 # background_folder: #背景图保存在background目录下的哪个子目录
 # key_long_text_border: 1
   enter_label_mode: 3 #是否使用App提供的ActionLabel内容作为Enter键的文本（由于多数App没有适配ActionLable，实际影响不大）。0不使用，1只使用actionlabel，2优先使用，3当其他方式没有获得label时才读取actionlabel
@@ -176,47 +184,9 @@ fallback_colors:
 #  long_text_back_color: key_back_color #长文本按键的背景(剪贴板）
 
 preset_color_schemes:
-  dark:
-    author: MISTER_CHAN
-    back_color: 0x222222
-    border_color: 0xFFFFFF
-    candidate_separator_color: 0x444444
-    candidate_text_color: 0xFFFFFF
-    comment_text_color: 0xAAAAAA
-    hilited_back_color: 0x555555
-    hilited_candidate_back_color: 0x555555
-    hilited_candidate_text_color: 0xFFFFFF
-    hilited_comment_text_color: 0xAAAAAA
-    hilited_key_back_color: 0x555555
-    hilited_key_symbol_color: 0xAAAAAA
-    hilited_key_text_color: 0xFFFFFF
-    hilited_off_key_back_color: 0x555555
-    hilited_off_key_text_color: 0xFFFFFF
-    hilited_on_key_back_color: 0x555555
-    hilited_on_key_text_color: 0xFFFFFF
-    hilited_text_color: 0xFFFFFF
-    key_back_color: 0x333333
-    key_border_color: 0xFFFFFF
-    key_symbol_color: 0xAAAAAA
-    key_text_color: 0xFFFFFF
-    keyboard_back_color: 0x222222
-    label_color: 0xFFFFFF
-    name: "夜間"
-    off_key_back_color: 0x444444
-    off_key_text_color: 0xFFFFFF
-    on_key_back_color: 0x555555
-    on_key_text_color: 0xFFFFFF
-    preview_back_color: 0x333333
-    preview_text_color: 0xFFFFFF
-    return_key_back_color: 0x99BBFF
-    return_key_text_color: 0x222222
-    shadow_color: 0x000000
-    text_back_color: 0x222222
-    text_color: 0xFFFFFF
-
   default:
-    name: "預設" #方案名稱
-    author: MISTER_CHAN #作者資訊
+    name: '預設' #方案名稱
+    author: 'MISTER_CHAN' #作者資訊
     back_color: 0xEEEEEE #候選區背景
     border_color: 0xFFFFFF #邊框
     candidate_separator_color: 0xCCCCCC #候選分割背景
@@ -252,6 +222,44 @@ preset_color_schemes:
     shadow_color: 0x000000 #按鍵文字陰影
     text_back_color: 0xEEEEEE #編碼區背景
     text_color: 0x000000 #編碼
+
+  dark:
+    name: '夜間'
+    author: 'MISTER_CHAN'
+    back_color: 0x222222
+    border_color: 0xFFFFFF
+    candidate_separator_color: 0x444444
+    candidate_text_color: 0xFFFFFF
+    comment_text_color: 0xAAAAAA
+    hilited_back_color: 0x555555
+    hilited_candidate_back_color: 0x555555
+    hilited_candidate_text_color: 0xFFFFFF
+    hilited_comment_text_color: 0xAAAAAA
+    hilited_key_back_color: 0x555555
+    hilited_key_symbol_color: 0xAAAAAA
+    hilited_key_text_color: 0xFFFFFF
+    hilited_off_key_back_color: 0x555555
+    hilited_off_key_text_color: 0xFFFFFF
+    hilited_on_key_back_color: 0x555555
+    hilited_on_key_text_color: 0xFFFFFF
+    hilited_text_color: 0xFFFFFF
+    key_back_color: 0x333333
+    key_border_color: 0xFFFFFF
+    key_symbol_color: 0xAAAAAA
+    key_text_color: 0xFFFFFF
+    keyboard_back_color: 0x222222
+    label_color: 0xFFFFFF
+    off_key_back_color: 0x444444
+    off_key_text_color: 0xFFFFFF
+    on_key_back_color: 0x555555
+    on_key_text_color: 0xFFFFFF
+    preview_back_color: 0x333333
+    preview_text_color: 0xFFFFFF
+    return_key_back_color: 0x99BBFF
+    return_key_text_color: 0x222222
+    shadow_color: 0x000000
+    text_back_color: 0x222222
+    text_color: 0xFFFFFF
 
 liquid_keyboard:
   # 目前只能直接写参数，不支持变量或者fallback机制。
@@ -507,7 +515,7 @@ preset_keys:
 
 tool_bar:
   button_spacing: 5 # 按钮间距
-  button_font: [noto-emoji.ttf, noto-symbols.ttf, noto-symbols-2.ttf, noto-math.ttf, mc.ttf] # 按钮字体
+  button_font: *fonts # 按钮字体
   primary_button: # 左侧固定主按钮配置
     background: # 背景样式设置
       type: rectangle # 高亮形状 (可选值: circle|rectangle)
