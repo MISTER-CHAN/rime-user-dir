@@ -27,6 +27,7 @@ patch:
     - {accept: 'Shift+backslash', send: bar, when: always}
     - {accept: 'Shift+bracketright', send: braceright, when: always}
     - {accept: 'Shift+apostrophe', send: quotedbl, when: always}
+    - {accept: 'Return', send: Escape, when: has_menu}
   schema_list:
     - {schema: jyut6ping3}
     - {schema: wubi86}

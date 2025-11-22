@@ -35,7 +35,7 @@ style:
   comment_position: right
   comment_text_size: 15 #編碼提示字號
   hanb_font: ['Jigmo2.ttf', 'Jigmo3.ttf'] #擴充字型
-  horizontal: true #水平模式
+# horizontal: true #水平模式
   horizontal_gap: 12 #鍵水平間距
   keyboard_padding: 0 #竖屏模式下，屏幕左右两侧与键盘的距离（曲面屏减少误触）
   keyboard_padding_left: 0 #竖屏屏模式下，左手键盘布局，屏幕左侧与键盘的距离
@@ -91,11 +91,17 @@ style:
 # latin_locale: en_US #西文語言
 # locale: zh_HK #預設語言 zh_TW,zh_CN,zh_HK,""
   keyboard_height: 240 #锁定键盘高度，避免切换时键盘高度变化而造成闪烁
-  keyboard_height_land: 200 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
-  preview_font: 'MISTER_CHAN_CJK.ttf' #按鍵提示字型
-  preview_height: 60 #按鍵提示高度
-  preview_offset: 0 #按鍵提示縱向偏移
-  preview_text_size: 40 #按鍵提示字號
+  keyboard_height_land: 180 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
+# preview_font: 'MISTER_CHAN_CJK.ttf' #按鍵提示字型
+# preview_height: 60 #按鍵提示高度
+# preview_offset: 0 #按鍵提示縱向偏移
+# preview_text_size: 40 #按鍵提示字號
+  popup_font: *fonts #按键提示字体
+  popup_width: 40 #按键提示宽度
+  popup_height: 50 #按键提示高度
+  popup_bottom_margin: 50 #按键提示底边距
+  popup_key_height: 50 #按键提示内键高度
+  popup_text_size: 24 #按键提示字号
   proximity_correction: true #按鍵糾錯
   reset_ascii_mode: false #顯示鍵盤時重置爲中文狀態
   round_corner: 0 #按鍵圓角半徑
@@ -197,7 +203,7 @@ preset_color_schemes:
     hilited_candidate_back_color: 0xDDDDDD #標明候選背景
     hilited_candidate_text_color: 0x222222 #標明候選文字
     hilited_comment_text_color: 0x666666 #標明提示
-    hilited_key_back_color: 0xAAAAAA #標明按鍵背景
+    hilited_key_back_color: 0xEEEEEE #標明按鍵背景
     hilited_key_symbol_color: 0x666666 #標明按鍵符號
     hilited_key_text_color: 0x000000 #標明按鍵文字
     hilited_off_key_back_color: 0xAAAAAA #標明按鍵關閉狀態背景
@@ -236,7 +242,7 @@ preset_color_schemes:
     hilited_candidate_back_color: 0x555555
     hilited_candidate_text_color: 0xFFFFFF
     hilited_comment_text_color: 0xAAAAAA
-    hilited_key_back_color: 0x555555
+    hilited_key_back_color: 0x222222
     hilited_key_symbol_color: 0xAAAAAA
     hilited_key_text_color: 0xFFFFFF
     hilited_off_key_back_color: 0x555555
@@ -276,7 +282,7 @@ liquid_keyboard:
   fixed_key_bar: # 固定按键条
     position: bottom # 摆放位置（在滚动区域的……） top|bottom|left|right
     keys: [liquid_keyboard_key_exit, liquid_keyboard_key_space, liquid_keyboard_key_backspace, liquid_keyboard_key_return] # 按键（显示名称为对应的label，不能放太多）
-  keyboards: [bl_l1s, faces, hands, clipboard, draft, collection]
+  keyboards: [bl_l1s, faces, hands]
   bl_l1s: # Basic Latin and Latin-1 Supplement
     name: ' !§ '
     type: SINGLE
@@ -358,60 +364,58 @@ preset_keys:
   VOLUME_UP: {label: 音量+, send: VOLUME_UP}
   VOLUME_MUTE: {label: 靜音, send: VOLUME_MUTE}
   # 編輯
-  Shift_L: {functional: true, label: '⇧', send: Shift_L, shift_lock: click}
-  Select: {functional: false, label: '⇧', send: Shift_L, shift_lock: click}
-  Shift_R: {functional: true, label: '⇧', send: Shift_R, shift_lock: click}
-  Shift_L_Long: {functional: true, label: '⇧', send: Shift_L, shift_lock: long}
-  Shift_R_Long: {functional: true, label: '⇧', send: Shift_R, shift_lock: long}
-  Control_L: {functional: true, label: '⎈', send: Control_L, shift_lock: click}
-  Control_R: {functional: true, label: '⎈', send: Control_R, shift_lock: click}
-  Alt_L: {functional: true, label: '⎇', send: Alt_L, shift_lock: click}
-  Alt_R: {functional: true, label: '⎇', send: Alt_R, shift_lock: click}
-  Meta_L: {functional: true, label: '◆', send: Meta_L, shift_lock: click}
-  Meta_R: {functional: true, label: '◆', send: Meta_R, shift_lock: click}
-  Return: {label: enter_labels, send: Return, description: 回车}
+  Shift_L: {label: '⇧', functional: true, send: Shift_L, shift_lock: click}
+  Select: {label: '⇧', functional: false, send: Shift_L, shift_lock: click}
+  Shift_R: {label: '⇧', functional: true, send: Shift_R, shift_lock: click}
+  Shift_L_Long: {label: '⇧', functional: true, send: Shift_L, shift_lock: long}
+  Shift_R_Long: {label: '⇧', functional: true, send: Shift_R, shift_lock: long}
+  Control_L: {label: '⎈', functional: true, send: Control_L, shift_lock: click}
+  Control_R: {label: '⎈', functional: true, send: Control_R, shift_lock: click}
+  Alt_L: {label: '⎇', functional: true, send: Alt_L, shift_lock: click}
+  Alt_R: {label: '⎇', functional: true, send: Alt_R, shift_lock: click}
+  Meta_L: {label: '◆', functional: true, send: Meta_L, shift_lock: click}
+  Meta_R: {label: '◆', functional: true, send: Meta_R, shift_lock: click}
+  Return: {label: enter_labels, functional: true, preview: '↵', send: Return, description: 回车}
+  Return_: {label: '↵', functional: true, send: Return}
   KP_Enter: {label: '⎆', send: KP_Enter}
   Hide: {label: 隱藏, send: BACK}
-  BackSpace: {label: ⌫, repeatable: true, functional: true, send: BackSpace, description: 删除}
-  space: {repeatable: false, functional: false, send: space}
-  space_: {repeatable: true, functional: false, send: space}
+  BackSpace: {label: '⌫', repeatable: true, functional: true, slide_delete: true, send: BackSpace, description: 删除}
+  space: {preview: '␣', repeatable: false, functional: false, slide_cursor: true, send: space}
+  space_: {preview: '␣', repeatable: true, functional: false, slide_cursor: true, send: space}
   Escape: {label: '⎋', send: Escape}
   Retype: {label: '⌧', send: Escape}
-  Home: {functional: false, label: '⇱', send: Home}
-  Insert: {functional: false, label: '▶', send: Insert}
-  Delete: {functional: true, label: '⌦', repeatable: true, send: Delete, description: 删除}
-  End: {functional: false, label: '⇲', send: End}
-  Page_Up: {functional: false, label: '▲', send: Page_Up}
-  Page_Down: {functional: false, label: '▼', send: Page_Down}
-  Left: {functional: false, label: '←', repeatable: true, send: Left, description: 左}
-  Down: {functional: false, label: '↓', repeatable: true, send: Down, description: 下}
-  Up: {functional: false, label: '↑', repeatable: true, send: Up, description: 上}
-  Right: {functional: false, label: '→', repeatable: true, send: Right, description: 右}
-  Shift_Left: {repeatable: true, send: Shift+Left}
-  Shift_Down: {repeatable: true, send: Shift+Down}
-  Shift_Up: {repeatable: true, send: Shift+Up}
-  Shift_Right: {repeatable: true, send: Shift+Right}
-  select_all: {functional: true, label: '☑', send: Control+a}
+  Home: {label: '⇱', functional: false, send: Home}
+  Insert: {label: '▶', functional: false, send: Insert}
+  Delete: {label: '⌦', repeatable: true, functional: true, send: Delete, description: 删除}
+  End: {label: '⇲', functional: false, send: End}
+  Page_Up: {label: '▲', functional: false, send: Page_Up}
+  Page_Down: {label: '▼', functional: false, send: Page_Down}
+  Left: {label: '←', repeatable: true, functional: false, send: Left, description: 左}
+  Down: {label: '↓', repeatable: true, functional: false, send: Down, description: 下}
+  Up: {label: '↑', repeatable: true, functional: false, send: Up, description: 上}
+  Right: {label: '→', repeatable: true, functional: false, send: Right, description: 右}
+  select_all: {label: '☑', functional: true, send: Control+a}
   Clear: {label: 清空, text: "{Control+a}{BackSpace}"} #全選並刪除
-  cut: {functional: true, label: 剪下, send: Control+x}
+  cut: {label: '✂', functional: true, send: Control+x}
   cut_all: {label: 全挪, text: "{Control+a}{Control+x}"} #全選並剪切
-  copy: {functional: true, label: 複製, send: Control+c}
+  copy: {label: '🗐', functional: true, send: Control+c}
   copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
-  paste: {functional: true, label: 貼上, send: Control+v}
+  paste: {label: '📋', functional: true, send: Control+v}
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
-  redo: {functional: true, label: '↷', send: Control+y} #>=Android 6.0
-  undo: {functional: true, label: '↶', send: Control+z} #>=Android 6.0
-  Tab: {functional: true, label: '⇥', send: Tab}
+  redo: {label: '↷', functional: true, send: Control+y} #>=Android 6.0
+  undo: {label: '↶', functional: true, send: Control+z} #>=Android 6.0
+  Tab: {label: '⇥', functional: true, send: Tab}
   delimiter: {functional: false, send: apostrophe, description: 分词}
-  Sys_Req: {functional: false, label: '⎙', send: Sys_Req}
-  Pause: {functional: false, label: "⎉", send: Pause}
+  Sys_Req: {label: '⎙', functional: false, send: Sys_Req}
+  Pause: {label: "⎉", functional: false, send: Pause}
   liquid_keyboard_key_exit: {label: '   🡨 ', functional: true, send: function, command: liquid_keyboard, option: "-1"}
   liquid_keyboard_key_space: {label: '　　　　　　　　　　', repeatable: true, send: space}
   liquid_keyboard_key_backspace: {label: ' ⌫ ',  repeatable: true, functional: true, send: BackSpace}
   liquid_keyboard_key_return: {label: ' ↵   ', functional: true, send: Return}
+  Five: {functional: false, slide_cursor: true, send: 5}
   # rime組合鍵
-  # F4: {label: 方案選單, send: F4}
+# F4: {label: 方案選單, send: F4}
   BackToPreviousSyllable: {label: '▕⌫　', send: Control+BackSpace}
   BackToSentence: {label: 刪句, send: Control+Shift+BackSpace}
   CommitRawInput: {label: 編碼, send: Control+Return}
@@ -423,11 +427,10 @@ preset_keys:
   Second: {label: ͢2, text: '{Right}{space}'}
   Third: {label: ͢3, text: '{Right}{Right}{space}'}
   Fourth: {label: ͢4, text: '{Right}{Right}{Right}{space}'}
-  ShiftCtrlLeft: {label: ' ', send: 'Shift+Control+Left'}
   # rime狀態
   Caps_Lock: {label: '⇬', send: Caps_Lock, shift_lock: click}
-  Num_Lock: {functional: false, label: '⇭', send: Num_Lock, shift_lock: click}
-  Scroll_Lock: {functional: false, label: '⇳', send: Scroll_Lock, shift_lock: click}
+  Num_Lock: {label: '⇭', functional: false, send: Num_Lock, shift_lock: click}
+  Scroll_Lock: {label: '⇳', functional: false, send: Scroll_Lock, shift_lock: click}
   Mode_switch: {toggle: ascii_mode, send: Mode_switch, states: [ 中文, 西文 ]}
   Zenkaku_Hankaku: {toggle: full_shape, send: Mode_switch, states: [ 半角, 全角 ]}
   Henkan: {toggle: simplification, send: Mode_switch, states: [ 繁體, 简体 ]}
@@ -446,9 +449,11 @@ preset_keys:
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
   liquid_keyboard_candidate: { label: ' ', send: function, command: liquid_keyboard, option: "▼" }
   liquid_keyboard_exit: {label: '🡨', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
-  liquid_keyboard_faces: { label: 🙂, send: function, command: liquid_keyboard, option: "🙂" }
-  liquid_keyboard_clipboard: { label: '📋', send: function, command: liquid_keyboard, option: "📋" }
+  liquid_keyboard_bl_l1s: { label: '!', send: function, command: liquid_keyboard, option: " !§ " }
+  liquid_keyboard_faces: { label: '🙂', send: function, command: liquid_keyboard, option: "🙂" }
+# liquid_keyboard_clipboard: { label: '📋', send: function, command: liquid_keyboard, option: "📋" }
   menu_keyboard: { label: 菜单, send: function, command: menu_keyboard }
+  clipboard_window: { label: '📋', send: function, command: 'clipboard_window' }
   set_color_ink: { label: 切换到ink配色, send: function, command: set_color_scheme, option: "ink" }
   # trime設定
   IME_switch: {label: 🌐, send: LANGUAGE_SWITCH} #彈出對話框選擇輸入法
@@ -459,8 +464,8 @@ preset_keys:
   one_hand_switch_2: {toggle: _one_hand_mode_2, send: Mode_switch, states: [ 右手, 普通 ]}
   one_hand_switch_3: {toggle: _one_hand_mode_3, send: Mode_switch, states: [ 左手, 右手 ]}
   Color_switch: {label: 配色, send: PROG_RED}
-  Help: {functional: false, label: '?', send: Help}
-  Info: {functional: false, label: 'ⓘ', send: INFO}
+  Help: {label: '?', functional: false, send: Help}
+  Info: {label: 'ⓘ', functional: false, send: INFO}
   Menu: {label: '菜單', send: Menu}
   Settings: {label: '⚙', send: SETTINGS}
   Color_settings: {label: '☀☽', send: SETTINGS, option: "color"}
@@ -490,28 +495,28 @@ preset_keys:
   Sync: {label: 同步, command: broadcast, option: "com.osfans.trime.sync"}
   RepeatCommit: { label: 重复,  command: commit, option: "%1$s" } #重复输入刚上屏的内容
   # 控制字符
-  Table: {functional: false, label: '製表', commit: "\t"}
-  LF: {functional: false, label: '饋行', commit: "\n"}
-  EnSp: {functional: false, label: 'En', commit: ' '}
-  EmSp: {functional: false, label: 'Em', commit: ' '}
-  TPES: {functional: false, label: '¹/₃', commit: ' '}
-  FPES: {functional: false, label: '¹/₄', commit: ' '}
-  SPES: {functional: false, label: '¹/₆', commit: ' '}
-  FS: {functional: false, label: '數字', commit: ' '}
-  PS: {functional: false, label: '標點', commit: ' '}
-  ZWS: {functional: false, label: '零寬', commit: '​'}
-  LRM: {functional: false, label: '左至右標誌', commit: '‎'}
-  RLM: {functional: false, label: '右至左標誌', commit: '‏'}
-  LRO: {functional: false, label: '左至右強制', commit: '‭'}
-  RLO: {functional: false, label: '右至左強制', commit: '‮'}
-  PDF: {functional: false, label: '退出方向化', commit: '‬'}
-  WJ: {functional: false, label: 'WJ', commit: "\u2060"}
-  FA: {functional: false, label: 'f()', commit: "\u2061"}
-  IT: {functional: false, label: '×', commit: "\u2062"}
-  IS: {functional: false, label: ',', commit: "\u2063"}
-  IP: {functional: false, label: '+', commit: "\u2064"}
-  LRI: {functional: false, label: 'LRI', commit: "\u2066"}
-  RLI: {functional: false, label: 'RLI', commit: "\u2067"}
+  Table: {label: '製表', commit: "\t"}
+  LF: {label: '饋行', commit: "\n"}
+  EnSp: {label: 'En', commit: ' '}
+  EmSp: {label: 'Em', commit: ' '}
+  TPES: {label: '¹/₃', commit: ' '}
+  FPES: {label: '¹/₄', commit: ' '}
+  SPES: {label: '¹/₆', commit: ' '}
+  FS: {label: '數字', commit: ' '}
+  PS: {label: '標點', commit: ' '}
+  ZWS: {label: '零寬', commit: '​'}
+  LRM: {label: '左至右標誌', commit: '‎'}
+  RLM: {label: '右至左標誌', commit: '‏'}
+  LRO: {label: '左至右強制', commit: '‭'}
+  RLO: {label: '右至左強制', commit: '‮'}
+  PDF: {label: '退出方向化', commit: '‬'}
+  WJ: {label: 'WJ', commit: "\u2060"}
+  FA: {label: 'f()', commit: "\u2061"}
+  IT: {label: '×', commit: "\u2062"}
+  IS: {label: ',', commit: "\u2063"}
+  IP: {label: '+', commit: "\u2064"}
+  LRI: {label: 'LRI', commit: "\u2066"}
+  RLI: {label: 'RLI', commit: "\u2067"}
 
 tool_bar:
   button_spacing: 5 # 按钮间距
@@ -635,7 +640,7 @@ preset_keyboards:
   mini:
     ascii_mode: 1
     author: MISTER_CHAN
-    keys: [{click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, has_menu: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+    keys: [{click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_emoticons}, {click: Schema_switch, long_click: Menu}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_up: Up, width: 40}, {click: .}, {click: Return, has_menu: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
     name: "精簡鍵盤"
     reset_ascii_mode: false
     width: 10
@@ -643,8 +648,8 @@ preset_keyboards:
     ascii_mode: 1
     author: MISTER_CHAN
     keys: [{click: "+"}, {click: 1, long_click: Home}, {click: 2, long_click: Up}, {click: 3, long_click: Page_Up}, {click: "*"},
-      {click: "-"}, {click: 4, long_click: Left}, {click: 5, swipe_left: Left, swipe_right: Right}, {click: 6, long_click: Right}, {click: "#"},
-      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace, swipe_left: ShiftCtrlLeft},
+      {click: "-"}, {click: 4, long_click: Left}, {click: Five, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up}, {click: 6, long_click: Right}, {click: "#"},
+      {click: "/"}, {click: 7, long_click: End}, {click: 8, long_click: Down}, {click: 9, long_click: Page_Down}, {click: BackSpace},
       {click: Keyboard_last_lock}, {click: Keyboard_symbols}, {click: 0}, {click: ., long_click: Delete}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color}]
     name: "預設數字"
     reset_ascii_mode: false
@@ -652,10 +657,10 @@ preset_keyboards:
   qwerty:
     ascii_mode: 0
     author: MISTER_CHAN
-    keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
-      {width: 5}, {click: a, long_click: '`', swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
-      {click: Shift_L, composing: delimiter, width: 15}, {click: z}, {click: x}, {click: c}, {click: v}, {click: b}, {click: n},{click: m}, {click: BackSpace, swipe_left: ShiftCtrlLeft, width: 15},
-      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ",", long_click: liquid_keyboard_faces}, {click: Schema_switch, long_click: Menu, label_symbol: ' '}, {click: space, key_text_size: 15, long_click: Keyboard_edit, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: .}, {click: Return, has_menu: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+    keys: [{click: q, long_click: 1, swipe_up: 1}, {click: w, long_click: 2, swipe_up: 2}, {click: e, long_click: 3, swipe_up: 3}, {click: r, long_click: 4, swipe_up: 4}, {click: t, long_click: 5, swipe_up: 5}, {click: y, long_click: 6, popup: ['6', redo], swipe_up: 6}, {click: u, long_click: 7, swipe_up: 7}, {click: i, long_click: 8, swipe_up: 8}, {click: o, long_click: 9, swipe_up: 9}, {click: p, long_click: 0, swipe_up: 0},
+      {width: 5}, {click: a, long_click: '`', popup: ['`', select_all], swipe_up: '`'}, {click: s, long_click: '-', swipe_up: '-'}, {click: d, long_click: '=', swipe_up: '='}, {click: f, long_click: '[', swipe_up: '['}, {click: g, long_click: ']', swipe_up: ']'}, {click: h, long_click: '\', swipe_up: '\'}, {click: j, long_click: ';', swipe_up: ';'}, {click: k, long_click: '''', swipe_up: ''''}, {click: l, long_click: '/', swipe_up: '/'}, {width: 5},
+      {click: Shift_L, composing: delimiter, width: 15}, {click: z, popup: ['z', undo]}, {click: x, popup: ['x', cut]}, {click: c, popup: ['c', copy]}, {click: v, popup: ['v', paste]}, {click: b}, {click: n},{click: m}, {click: BackSpace, width: 15},
+      {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}, {click: ',', long_click: liquid_keyboard_faces, popup: [liquid_keyboard_faces, clipboard_window, liquid_keyboard_bl_l1s]}, {click: Schema_switch, long_click: Menu, label_symbol: ' '}, {click: space, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 40}, {click: '.', popup: ['.', ',', '!', '?']}, {click: Return, has_menu: Retype, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
     landscape_keyboard: qwerty_land
     lock: true
     name: "預設26鍵"
@@ -702,7 +707,7 @@ preset_keyboards:
       {click: '!'}, {click: '@'}, {click: "#"}, {click: "$"}, {click: "%"}, {click: '^'}, {click: "&"}, {click: "*"}, {click: "("}, {click: ")"},
       {click: "`"}, {click: "-"}, {click: "="}, {click: "["}, {click: "]"}, {click: '\'}, {click: ";"}, {click: "'"}, {click: "<"}, {click: "/"},
       {click: "~"}, {click: '_'}, {click: "+"}, {click: '{'}, {click: '}'}, {click: '|'}, {click: ':'}, {click: '"'}, {click: '>'}, {click: '?'},
-      {click: Keyboard_last_lock, key_back_color: off_key_back_color, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number, key_back_color: off_key_back_color}, {click: ","}, {click: space_, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: .}, {click: BackSpace, key_back_color: off_key_back_color, swipe_left: ShiftCtrlLeft}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
+      {click: Keyboard_last_lock, key_back_color: off_key_back_color, long_click: Keyboard_us_104, width: 15}, {click: Keyboard_number, key_back_color: off_key_back_color}, {click: ',', long_click: liquid_keyboard_faces, popup: [liquid_keyboard_faces, liquid_keyboard_clipboard, liquid_keyboard_bl_l1s]}, {click: space_, key_text_size: 15, swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up, width: 30}, {click: '.', popup: ['.', ',', '!', '?']}, {click: BackSpace, key_back_color: off_key_back_color}, {click: Return, key_back_color: return_key_back_color, key_text_color: return_key_text_color, width: 15}]
     name: "符號"
     reset_ascii_mode: false
     width: 10
