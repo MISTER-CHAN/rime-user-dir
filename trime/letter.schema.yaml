@@ -15,6 +15,3 @@ switches:
     reset: 1
   - name: full_shape
     states: [ 半角, 全角 ]
-
-key_binder:
-  import_preset: default
