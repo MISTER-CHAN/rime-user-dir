@@ -16,9 +16,5 @@ switches:
   - name: full_shape
     states: [ 半角, 全角 ]
 
-engine:
-  processors:
-    - key_binder
-
 key_binder:
   import_preset: default
