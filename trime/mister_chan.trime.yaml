@@ -53,11 +53,11 @@ style:
   key_press_offset_y: 0
   key_width: 10.0 #鍵寬，佔螢幕寬的百分比
   label_text_size: 22 #標籤字號
-  label_font: 'MISTER_CHAN_CJK.ttf' #編標籤字型
-  latin_font: 'MISTER_CHAN_CJK.ttf' #西文字型
+  label_font: *font_mc #編標籤字型
+  latin_font: *font_mc #西文字型
   keyboard_height: 240 #锁定键盘高度，避免切换时键盘高度变化而造成闪烁
   keyboard_height_land: 180 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
-  popup_font: ['NotoEmoji-Regular.ttf', *font_m, *font_s, *font_s2, *font_mc] #按键提示字体
+  popup_font: [*font_m, *font_s, *font_s2, *font_mc] #按键提示字体
   popup_width: 40 #按键提示宽度
   popup_height: 50 #按键提示高度
   popup_bottom_margin: 50 #按键提示底边距
@@ -69,7 +69,7 @@ style:
   shadow_radius: 0.0 #按鍵陰影半徑
   symbol_font: [*font_m, *font_s, *font_s2, *font_mc] #符號字型
   symbol_text_size: 10 #符號字號
-  text_font: 'MISTER_CHAN_CJK.ttf' #編碼字型
+  text_font: *font_mc #編碼字型
   vertical_correction: 0
   vertical_gap: 12 #鍵盤行距
 # background_folder: #背景图保存在background目录下的哪个子目录
@@ -77,8 +77,8 @@ style:
   enter_labels: # 定义Enter键的文本
     go: 'ic@arrow-right'
     done: 'ic@check'
-    next: '⇥'
-    pre: '⇤'
+    next: 'ic@keyboard-tab'
+    pre: 'ic@keyboard-tab-reverse'
     search: 'ic@magnify'
     send: 'ic@send'
     default: 'ic@keyboard-return' # 定义默认Enter键的文本
@@ -237,7 +237,7 @@ liquid_keyboard:
   fixed_key_bar: # 固定按键条
     position: bottom # 摆放位置（在滚动区域的……） top|bottom|left|right
     keys: [liquid_keyboard_key_exit, liquid_keyboard_key_space, liquid_keyboard_key_backspace, liquid_keyboard_key_return] # 按键（显示名称为对应的label，不能放太多）
-  keyboards: [bl_l1s, faces, hands]
+  keyboards: [bl_l1s, faces, hands, gestures]
   bl_l1s: # Basic Latin and Latin-1 Supplement
     name: ' !§ '
     type: SINGLE
@@ -257,11 +257,15 @@ liquid_keyboard:
   faces:
     name: '🙂'
     type: SINGLE
-    keys: ['☹', '☺', '☻', '👿', '😀', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😈', '😉', '😊', '😋', '😌', '😍', '😎', '😏', '😐', '😑', '😒', '😓', '😔', '😕', '😖', '😗', '😘', '😙', '😚', '😛', '😜', '😝', '😞', '😟', '😠', '😡', '😢', '😣', '😤', '😥', '😦', '😧', '😨', '😩', '😪', '😫', '😬', '😭', '😮', '😮‍💨', '😯', '😰', '😱', '😲', '😳', '😴', '😵', '😵‍💫', '😶', '😶‍🌫️', '😷', '🙁', '🙂', '🙂‍↔️', '🙂‍↕️', '🙃', '🙄', '🤐', '🤑', '🤒', '🤓', '🤔', '🤕', '🤗', '🤠', '🤡', '🤢', '🤣', '🤤', '🤥', '🤧', '🤨', '🤩', '🤪', '🤫', '🤬', '🤭', '🤮', '🤯', '🥰', '🥱', '🥲', '🥳', '🥴', '🥵', '🥶', '🥸', '🥹', '🥺', '🧐', '🫠', '🫡', '🫢', '🫣', '🫤', '🫥', '🫨', '🫩']
+    keys: ['☹', '☺', '☻', '👿', '😀', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😈', '😉', '😊', '😋', '😌', '😍', '😎', '😏', '😐', '😑', '😒', '😓', '😔', '😕', '😖', '😗', '😘', '😙', '😚', '😛', '😜', '😝', '😞', '😟', '😠', '😡', '😢', '😣', '😤', '😥', '😦', '😧', '😨', '😩', '😪', '😫', '😬', '😭', '😮', '😮‍💨', '😯', '😰', '😱', '😲', '😳', '😴', '😵', '😵‍💫', '😶', '😶‍🌫', '😷', '🙁', '🙂', '🙂‍↔', '🙂‍↕', '🙃', '🙄', '🤐', '🤑', '🤒', '🤓', '🤔', '🤕', '🤗', '🤠', '🤡', '🤢', '🤣', '🤤', '🤥', '🤧', '🤨', '🤩', '🤪', '🤫', '🤬', '🤭', '🤮', '🤯', '🥰', '🥱', '🥲', '🥳', '🥴', '🥵', '🥶', '🥸', '🥹', '🥺', '🧐', '🫠', '🫡', '🫢', '🫣', '🫤', '🫥', '🫨', '🫩', '🫪', '︎', '️']
+  gestures:
+    name: '🙋'
+    type: SINGLE
+    keys: ['💁', '🙅', '🙆', '🙇', '🙋', '🙍', '🙎', '🤦', '🤷', '🧏', '🏻', '🏼', '🏽', '🏾', '🏿', '‍♂', '‍♀']
   hands:
     name: '🖐'
     type: SINGLE
-    keys: '☜☝☞☟✊✋✌👆👇👈👉👊👋👌👍👎👏👐💪🖐🖑🖒🖓🖕🖖🙌🙏🤌🤏🤘🤙🤚🤛🤜🤝🤞🤟🤲🫰🫱🫲🫳🫴🫵🫶🫷🫸'
+    keys: '☜☝☞☟✊✋✌👆👇👈👉👊👋👌👍👎👏👐💪🖐🖑🖒🖓🖕🖖🙌🙏🤌🤏🤘🤙🤚🤛🤜🤝🤞🤟🤲🫰🫱🫲🫳🫴🫵🫶🫷🫸🏻🏼🏽🏾🏿︎️'
 
 preset_keys:
   # 安卓
@@ -281,47 +285,47 @@ preset_keys:
   VOLUME_UP: {label: 音量+, send: VOLUME_UP}
   VOLUME_MUTE: {label: 靜音, send: VOLUME_MUTE}
   # 編輯
-  Shift_L: {label: 'ic@apple-keyboard-shift', preview: '⇧', functional: true, send: Shift_L, shift_lock: click}
-  Shift_L_: {label: 'ic@apple-keyboard-shift', preview: '⇧', functional: false, slide_cursor: true, send: Shift_L, shift_lock: click}
-  Shift_L_Long: {label: '⇧', functional: true, send: Shift_L, shift_lock: long}
-  Shift_R: {label: '⇧', functional: true, send: Shift_R, shift_lock: click}
+  Shift_L: {label: 'ic@apple-keyboard-shift', functional: true, send: Shift_L, shift_lock: click}
+  Shift_L_: {label: 'ic@apple-keyboard-shift', functional: false, slide_cursor: true, send: Shift_L, shift_lock: click}
+  Shift_L_Long: {label: 'ic@apple-keyboard-shift', functional: true, send: Shift_L, shift_lock: long}
+  Shift_R: {label: 'ic@apple-keyboard-shift', functional: true, send: Shift_R, shift_lock: click}
   Control_L: {label: '⎈', functional: true, send: Control_L, shift_lock: click}
   Control_R: {label: '⎈', functional: true, send: Control_R, shift_lock: click}
   Alt_L: {label: '⎇', functional: true, send: Alt_L, shift_lock: click}
   Alt_R: {label: '⎇', functional: true, send: Alt_R, shift_lock: click}
   Meta_L: {label: '◆', functional: true, send: Meta_L, shift_lock: click}
   Meta_R: {label: '◆', functional: true, send: Meta_R, shift_lock: click}
-  Return: {label: enter_labels, preview: '↵', functional: true, send: Return, description: 回车}
+  Return: {label: enter_labels, preview: 'ic@keyboard-return', functional: true, send: Return, description: 回车}
   Return_: {label: '↵', functional: true, send: Return}
   Hide: {label: 隱藏, send: BACK}
-  BackSpace: {label: 'ic@backspace-outline', preview: '⌫', repeatable: true, functional: true, slide_delete: true, send: BackSpace, description: 删除}
-  space: {preview: '␣', repeatable: false, functional: false, slide_cursor: true, send: space}
-  space_: {preview: '␣', repeatable: true, functional: false, slide_cursor: true, send: space}
+  BackSpace: {label: 'ic@backspace-outline', repeatable: true, functional: true, slide_delete: true, send: BackSpace, description: 删除}
+  space: {preview: 'ic@keyboard-space', repeatable: false, functional: false, slide_cursor: true, send: space}
+  space_: {preview: 'ic@keyboard-space', repeatable: true, functional: false, slide_cursor: true, send: space}
   Escape: {label: '⎋', send: Escape}
-  Retype: {label: 'ic@close-box-outline', preview: '⌧', send: Escape}
+  Retype: {label: 'ic@close-box-outline', send: Escape}
   Home: {label: '⇱', functional: false, send: Home}
   Insert: {label: '⎀', functional: false, send: Insert}
   Delete: {label: '␥', repeatable: true, functional: true, send: Delete, description: 删除}
   End: {label: '⇲', functional: false, send: End}
   Page_Up: {label: '⎗', functional: false, send: Page_Up}
   Page_Down: {label: '⎘', functional: false, send: Page_Down}
-  Left: {label: 'ic@arrow-left', preview: '←', repeatable: true, functional: false, send: Left, description: 左}
-  Down: {label: 'ic@arrow-down', preview: '↓', repeatable: true, functional: false, send: Down, description: 下}
-  Up: {label: 'ic@arrow-up', preview: '↑', repeatable: true, functional: false, send: Up, description: 上}
-  Right: {label: 'ic@arrow-right', preview: '→', repeatable: true, functional: false, send: Right, description: 右}
-  select_all: {label: 'ic@select-all', preview: '☑', functional: true, send: Control+a}
+  Left: {label: 'ic@arrow-left', repeatable: true, functional: false, send: Left, description: 左}
+  Down: {label: 'ic@arrow-down', repeatable: true, functional: false, send: Down, description: 下}
+  Up: {label: 'ic@arrow-up', repeatable: true, functional: false, send: Up, description: 上}
+  Right: {label: 'ic@arrow-right', repeatable: true, functional: false, send: Right, description: 右}
+  select_all: {label: 'ic@select-all', functional: true, send: Control+a}
   Clear: {label: 清空, text: "{Control+a}{BackSpace}"} #全選並刪除
-  cut: {label: 'ic@content-cut', preview: '✂', functional: true, send: Control+x}
+  cut: {label: 'ic@content-cut', functional: true, send: Control+x}
   cut_all: {label: 全挪, text: "{Control+a}{Control+x}"} #全選並剪切
-  copy: {label: 'ic@content-copy', preview: '🗐', functional: true, send: Control+c}
+  copy: {label: 'ic@content-copy', functional: true, send: Control+c}
   copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
-  paste: {label: 'ic@content-paste', preview: '📋', functional: true, send: Control+v}
+  paste: {label: 'ic@content-paste', functional: true, send: Control+v}
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
-  redo: {label: 'ic@redo', preview: '↷', functional: true, send: Control+y} #>=Android 6.0
-  undo: {label: 'ic@undo', preview: '↶', functional: true, send: Control+z} #>=Android 6.0
+  redo: {label: 'ic@redo', functional: true, send: Control+y} #>=Android 6.0
+  undo: {label: 'ic@undo', functional: true, send: Control+z} #>=Android 6.0
   _5_: {functional: false, slide_cursor: true, send: _5}
-  Tab: {label: 'ic@keyboard-tab', preview: '⇥', functional: true, send: Tab}
+  Tab: {label: 'ic@keyboard-tab', functional: true, send: Tab}
   Sys_Req: {label: '⎙', functional: false, send: Sys_Req}
   Pause: {label: "⎉", functional: false, send: Pause}
   KP_Enter: {label: '⎆', send: KP_Enter}
@@ -351,30 +355,27 @@ preset_keys:
   Scroll_Lock: {label: '⇳', functional: false, send: Scroll_Lock, shift_lock: click}
   Num_Lock: {label: '⇭', functional: false, send: Num_Lock, shift_lock: click}
   #切换键盘
-  Keyboard_default: {label: 'ic@arrow-left', preview: '🡨', functional: true, send: Eisu_toggle, select: .default}
+  Keyboard_default: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .default}
   Keyboard_edit: {label: ' ', functional: true, send: Eisu_toggle, select: edit}
-  Keyboard_last: {label: 'ic@arrow-left', preview: '🡨', functional: true, send: Eisu_toggle, select: .last}
-  Keyboard_last_lock: {label: 'ic@arrow-left', preview: '🡨', functional: true, send: Eisu_toggle, select: .last_lock}
+  Keyboard_last: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .last}
+  Keyboard_last_lock: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .last_lock}
   Keyboard_last_lock_: {label: '⮌', functional: true, send: Eisu_toggle, select: .last_lock}
   Keyboard_number: {label: '123', functional: true, send: Eisu_toggle, select: number}
   Keyboard_symbols: {label: '!@#', functional: true, send: Eisu_toggle, select: symbols}
   Keyboard_switch: {label: '⌨', functional: true, send: Eisu_toggle, select: .next}
   Keyboard_us_104: {label: ' ', functional: true, send: Eisu_toggle, select: us_104}
-  liquid_keyboard_bl_l1s: { label: 'ic@symbol', preview: '!', send: function, command: liquid_keyboard, option: " !§ " }
-  liquid_keyboard_candidate: { label: ' ', send: function, command: liquid_keyboard, option: "▼" }
-# liquid_keyboard_clipboard: { label: '📋', send: function, command: liquid_keyboard, option: "📋" }
-  liquid_keyboard_exit: {label: '🡨', send: function, command: liquid_keyboard, option: "-1"}  #退出liquidkeyboard
-  liquid_keyboard_faces: { label: 'ic@emoticon-outline', preview: '🙂', send: function, command: liquid_keyboard, option: "🙂" }
+  liquid_keyboard_bl_l1s: { label: 'ic@symbol', send: function, command: liquid_keyboard, option: " !§ " }
+  liquid_keyboard_faces: { label: 'ic@emoticon-outline', send: function, command: liquid_keyboard, option: "🙂" }
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
   menu_keyboard: { label: 菜单, send: function, command: menu_keyboard }
-  clipboard_window: { label: 'ic@clipboard-outline', preview: '📋', send: function, command: 'clipboard_window' }
+  clipboard_window: { label: 'ic@clipboard-outline', send: function, command: 'clipboard_window' }
   set_color_ink: { label: 切换到ink配色, send: function, command: set_color_scheme, option: "ink" }
   set_theme_ink: { label: 切换到ink主题, send: function, command: set_theme, option: "ink" } #空参数为刷新主题
   # trime設定
-  IME_switch: {label: '🌐', send: LANGUAGE_SWITCH} #彈出對話框選擇輸入法
-  IME_last: {label: 上一輸入法, send: LANGUAGE_SWITCH, select: .last} #直接切換到上一輸入法
-  IME_next: {label: 下一輸入法, send: LANGUAGE_SWITCH, select: .next} #直接切換到下一輸入法
-  Schema_switch: {label: 'ic@web', preview: '🌐', functional: false, send: Control+Shift+1}
+  IME_switch: { label: 🌐, send: LANGUAGE_SWITCH } #彈出對話框選擇輸入法
+  IME_last: { label: 上一輸入法, send: LANGUAGE_SWITCH, select: .last } #直接切換到上一輸入法
+  IME_next: { label: 下一輸入法, send: LANGUAGE_SWITCH, select: .next } #直接切換到下一輸入法
+  Schema_switch: {label: 'ic@web', functional: false, send: Control+Shift+1}
   one_hand_switch_1: {toggle: _one_hand_mode_1, send: Mode_switch, states: [ 左手, 普通 ]}
   one_hand_switch_2: {toggle: _one_hand_mode_2, send: Mode_switch, states: [ 右手, 普通 ]}
   one_hand_switch_3: {toggle: _one_hand_mode_3, send: Mode_switch, states: [ 左手, 右手 ]}
@@ -497,7 +498,7 @@ preset_keyboards:
       - &return_key_color {key_back_color: return_key_back_color, key_text_color: return_key_text_color}
       - &space_swipe {swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up}
   cangjie5:
-    __include: '/preset_keyboards/qwerty' 
+    __include: 'preset_keyboards/qwerty' 
     __patch:
       'keys/@0/label': '手'
       'keys/@1/label': '田'
