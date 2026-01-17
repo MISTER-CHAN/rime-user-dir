@@ -41,7 +41,7 @@ style:
   key_font: *font #鍵盤字型
   key_border: 0
   key_height: 50 #鍵高
-  key_long_text_size: 20 #長標籤字號
+  key_long_text_size: 24 #長標籤字號
   key_text_size: 24 #鍵字號
   key_text_offset_x: 0
   key_text_offset_y: 0
@@ -361,7 +361,8 @@ preset_keys:
   Keyboard_last_lock: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .last_lock}
   Keyboard_last_lock_: {label: '⮌', functional: true, send: Eisu_toggle, select: .last_lock}
   Keyboard_number: {label: '123', functional: true, send: Eisu_toggle, select: number}
-  Keyboard_symbols: {label: '!@#', functional: true, send: Eisu_toggle, select: symbols}
+  Keyboard_number_: {label: '123', functional: false, send: Eisu_toggle, select: number}
+  Keyboard_symbols: {label: '!@#', functional: false, send: Eisu_toggle, select: symbols}
   Keyboard_switch: {label: '⌨', functional: true, send: Eisu_toggle, select: .next}
   Keyboard_us_104: {label: ' ', functional: true, send: Eisu_toggle, select: us_104}
   liquid_keyboard_bl_l1s: { label: 'ic@symbol', send: function, command: liquid_keyboard, option: " !§ " }
@@ -493,7 +494,7 @@ tool_bar:
 preset_keyboards:
   anchors:
     keys:
-      - &comma {click: comma, label_symbol: '', long_click: liquid_keyboard_faces, popup: [liquid_keyboard_faces, clipboard_window, liquid_keyboard_bl_l1s]}
+      - &comma {click: comma, long_click: liquid_keyboard_faces, popup: [liquid_keyboard_faces, clipboard_window, liquid_keyboard_bl_l1s]}
       - &period {click: period, popup: [., ',', '!', '?']}
       - &return_key_color {key_back_color: return_key_back_color, key_text_color: return_key_text_color}
       - &space_swipe {swipe_down: Down, swipe_left: Left, swipe_right: Right, swipe_up: Up}
@@ -622,7 +623,7 @@ preset_keyboards:
       - {click: '9'}
       - {click: BackSpace}
       - {click: Keyboard_last_lock}
-      - {click: Keyboard_symbols}
+      - {click: Keyboard_symbols, key_text_size: 20}
       - {click: '0'}
       - {click: '.'}
       - {click: Return, <<: *return_key_color}
@@ -662,7 +663,7 @@ preset_keyboards:
       - {click: '9'}
       - {click: BackSpace}
       - {click: Keyboard_last_lock}
-      - {click: Keyboard_symbols}
+      - {click: Keyboard_symbols, key_text_size: 20}
       - {click: '0'}
       - {click: '.'}
       - {width: 20}
@@ -706,13 +707,13 @@ preset_keyboards:
       - {click: n}
       - {click: m}
       - {click: BackSpace, width: 15}
-      - {click: Keyboard_number, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}
+      - {click: Keyboard_number, key_text_size: 20, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}
       - {<<: *comma, key_symbol_offset_y: -40}
-      - {click: Schema_switch, long_click: Menu}
+      - {click: Schema_switch, key_text_size: 20, long_click: Menu}
       - {click: space, key_text_size: 15, <<: *space_swipe, width: 40}
       - *period
       - {click: Return, has_menu: Retype, <<: *return_key_color, width: 15}
-    landscape_split_percent: 80
+    landscape_split_percent: 70
     lock: true
     name: '預設26鍵'
     reset_ascii_mode: false
@@ -778,31 +779,30 @@ preset_keyboards:
       - {click: '`'}
       - {click: '-'}
       - {click: '='}
-      - {click: '['}
-      - {click: ']'}
+      - {click: '[]{Left}', swipe_left: '[', swipe_right: ']'}
       - {click: '\'}
       - {click: ';'}
       - {click: "'"}
-      - {click: '<'}
+      - {click: ','}
+      - {click: '.'}
       - {click: '/'}
       - {click: '~'}
       - {click: '_'}
       - {click: '+'}
-      - {click: '{'}
-      - {click: '}'}
+      - {click: '{}{Left}', swipe_left: '{', swipe_right: '}'}
       - {click: '|'}
       - {click: ':'}
       - {click: '"'}
-      - {click: '>'}
+      - {click: '<>{Left}', swipe_left: '<', swipe_right: '>'}
       - {click: '?'}
-      - {click: Keyboard_last_lock, long_click: Keyboard_us_104, width: 15}
-      - {click: Keyboard_number}
-      - {<<: *comma, key_symbol_offset_y: -30}
-      - {click: space, key_text_size: 15, <<: *space_swipe, width: 30}
-      - *period
       - {click: BackSpace}
+      - {click: Keyboard_last_lock, long_click: Keyboard_us_104, width: 15}
+      - {<<: *comma, key_symbol_offset_y: -30}
+      - {click: Keyboard_number_, key_text_size: 20}
+      - {click: space, key_text_size: 15, <<: *space_swipe, width: 40}
+      - *period
       - {click: Return, <<: *return_key_color, width: 15}
-    landscape_split_percent: 80
+    landscape_split_percent: 70
     name: '符號'
     reset_ascii_mode: false
     width: 10
