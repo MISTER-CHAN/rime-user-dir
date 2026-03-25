@@ -25,13 +25,14 @@ style:
   candidate_spacing: 0.5 #候選間距
   candidate_text_size: 20 #候選字號
   candidate_view_height: 40 #候選區高度
+  candidate_corner_radius: 0 #候選項圓角半徑
   comment_font: *font #編碼提示字型
   comment_height: 0 #編碼提示區高度
   comment_on_top: false #編碼提示在上方或右側
   comment_position: right
   comment_text_size: 15 #編碼提示字號
   hanb_font: ['Jigmo2.ttf', 'Jigmo3.ttf'] #擴充字型
-  horizontal_gap: 12 #鍵水平間距
+  horizontal_gap: 6 #鍵水平間距
   keyboard_padding: 0 #竖屏模式下，屏幕左右两侧与键盘的距离（曲面屏减少误触）
   keyboard_padding_left: 0 #竖屏屏模式下，左手键盘布局，屏幕左侧与键盘的距离
   keyboard_padding_right: 0 #竖屏屏模式下，左手键盘布局，屏幕右侧与键盘的距离
@@ -63,14 +64,12 @@ style:
   popup_bottom_margin: 50 #按键提示底边距
   popup_key_height: 50 #按键提示内键高度
   popup_text_size: 24 #按键提示字号
-  proximity_correction: true #按鍵糾錯
   reset_ascii_mode: false #顯示鍵盤時重置爲中文狀態
   round_corner: 0 #按鍵圓角半徑
   shadow_radius: 0.0 #按鍵陰影半徑
   symbol_font: [*font_m, *font_s, *font_s2, *font_mc] #符號字型
   symbol_text_size: 10 #符號字號
   text_font: *font_mc #編碼字型
-  vertical_correction: 0
   vertical_gap: 12 #鍵盤行距
 # background_folder: #背景图保存在background目录下的哪个子目录
   enter_label_mode: 3 #是否使用App提供的ActionLabel内容作为Enter键的文本（由于多数App没有适配ActionLable，实际影响不大）。0不使用，1只使用actionlabel，2优先使用，3当其他方式没有获得label时才读取actionlabel
@@ -314,12 +313,13 @@ preset_keys:
   Up: {label: 'ic@arrow-up', repeatable: true, functional: false, send: Up, description: 上}
   Right: {label: 'ic@arrow-right', repeatable: true, functional: false, send: Right, description: 右}
   select_all: {label: 'ic@select-all', functional: true, send: Control+a}
-  Clear: {label: 清空, text: "{Control+a}{BackSpace}"} #全選並刪除
+  Clear: {label: 'ic@select-all', text: "{Control+a}{BackSpace}"} #全選並刪除
   cut: {label: 'ic@content-cut', functional: true, send: Control+x}
-  cut_all: {label: 全挪, text: "{Control+a}{Control+x}"} #全選並剪切
+  cut_all: {label: 'ic@select-all', text: "{Control+a}{Control+x}"} #全選並剪切
   copy: {label: 'ic@content-copy', functional: true, send: Control+c}
-  copy_all: {label: 全謄, text: "{Control+a}{Control+c}"} #全選並複製
+  copy_all: {label: 'ic@select-all', text: "{Control+a}{Control+c}"} #全選並複製
   paste: {label: 'ic@content-paste', functional: true, send: Control+v}
+  paste_all: {label: 'ic@select-all', text: "{Control+a}{Control+v}"} #全選並貼上
   paste_text: {label: 貼上文本, send: Control+Shift+Alt+v} #>=Android 6.0
   share_text: {label: 分享文本, send: Control+Alt+s} #>=Android 6.0
   redo: {label: 'ic@redo', functional: true, send: Control+y} #>=Android 6.0
@@ -342,9 +342,9 @@ preset_keys:
   DeleteCandidate: {label: 刪詞, send: Control+Delete}
   Del1stChar: {text: '{space}{Left}{Delete}'}
   Del2ndChar: {text: '{space}{Left}{Left}{Delete}{Right}'}
-  2nd: {label: ͢2, text: '{Right}{space}'}
-  3rd: {label: ͢3, text: '{Right}{Right}{space}'}
-  4th: {label: ͢4, text: '{Right}{Right}{Right}{space}'}
+  2nd: {label: ͢2, send: function, command: select_candidate, option: '2'}
+  3rd: {label: ͢3, send: function, command: select_candidate, option: '3'}
+  4th: {label: ͢4, send: function, command: select_candidate, option: '4'}
   # rime狀態
   Mode_switch: {toggle: ascii_mode, send: Mode_switch, states: [ 中文, 西文 ]}
   Zenkaku_Hankaku: {toggle: full_shape, send: Mode_switch, states: [ 半角, 全角 ]}
@@ -356,7 +356,7 @@ preset_keys:
   Num_Lock: {label: '⇭', functional: false, send: Num_Lock, shift_lock: click}
   #切换键盘
   Keyboard_default: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .default}
-  Keyboard_edit: {label: ' ', functional: true, send: Eisu_toggle, select: edit}
+  Keyboard_editor: {label: ' ', functional: true, send: Eisu_toggle, select: editor}
   Keyboard_last: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .last}
   Keyboard_last_lock: {label: 'ic@arrow-left', functional: true, send: Eisu_toggle, select: .last_lock}
   Keyboard_last_lock_: {label: 'ic@arrow-u-left-top', functional: true, send: Eisu_toggle, select: .last_lock}
@@ -369,7 +369,7 @@ preset_keys:
   liquid_keyboard_faces: { label: 'ic@emoticon-outline', send: function, command: liquid_keyboard, option: "🙂" }
   liquid_keyboard_switch: { label: '…', send: function, command: liquid_keyboard, option: "更多" }
   menu_keyboard: { label: 菜单, send: function, command: menu_keyboard }
-  clipboard_window: { label: 'ic@clipboard-outline', send: function, command: 'clipboard_window' }
+  clipboard_window: { label: 'ic@clipboard-outline', send: function, command: 'clipboard_window', option: '0' } #0剪贴板，1收藏夹
   set_color_ink: { label: 切换到ink配色, send: function, command: set_color_scheme, option: "ink" }
   set_theme_ink: { label: 切换到ink主题, send: function, command: set_theme, option: "ink" } #空参数为刷新主题
   # trime設定
@@ -438,6 +438,7 @@ preset_keys:
 tool_bar:
   button_spacing: 5 # 按钮间距
   button_font: *font # 按钮字体
+# back_style: 'ic@arrow-left'
   primary_button: # 左侧固定主按钮配置
 #   size: [120, 24] # 视图控件宽高，非前景样式宽高
     background: &background # 背景样式设置
@@ -446,11 +447,11 @@ tool_bar:
 #     normal: 0x00 # 正常状态背景颜色
 #     highlight: hilited_candidate_back_color # 高亮状态背景色
       vertical_inset: 0 # 垂直方向内缩量
-#     horizontal_inset: 0 # 水平方向内缩量
+      horizontal_inset: 0 # 水平方向内缩量
     foreground: # 前景内容设置
       style: "ㄓ" # 内置质感设计图标样式（以ic@开头）
 #     normal: candidate_text_color # 正常状态前景色 (本地图片不允许着色)
-#     highlight: # 高亮状态前景色
+#     highlight: hilited_candidate_back_color # 高亮状态前景色
       font_size: 20
 #     padding: 0 # 前景内容与背景边界的内边距
     action: menu_keyboard # 按钮点击事件
@@ -485,11 +486,13 @@ tool_bar:
         style: "ic@content-paste"
         font_size: 20
       action: paste
+      long_press_action: paste_all
     - background: *background
       foreground:
         style: "ic@undo"
         font_size: 20
       action: undo
+      long_press_action: redo
 
 preset_keyboards:
   anchors:
@@ -530,7 +533,7 @@ preset_keyboards:
     name: '倉頡五代鍵盤'
   default:
     __include: 'trime:/preset_keyboards/default'
-  edit:
+  editor:
     ascii_mode: 1
     author: MISTER_CHAN
     keys:
@@ -554,11 +557,11 @@ preset_keyboards:
       - {click: copy}
       - {click: paste}
       - {click: Return, <<: *return_key_color}
-    landscape_keyboard: edit_land
+    landscape_keyboard: editor_land
     name: '編輯'
     reset_ascii_mode: false
     width: 20
-  edit_land:
+  editor_land:
     ascii_mode: 1
     author: MISTER_CHAN
     keys:
@@ -614,14 +617,14 @@ preset_keyboards:
       - {click: '*'}
       - {click: '-'}
       - {click: '4'}
-      - {click: _5_, long_click: Keyboard_edit, <<: *space_swipe}
+      - {click: _5_, long_click: Keyboard_editor, <<: *space_swipe}
       - {click: '6'}
       - {click: '#'}
       - {click: '/'}
       - {click: '7'}
       - {click: '8'}
       - {click: '9'}
-      - {click: BackSpace}
+      - {click: BackSpace, swipe_down: Clear, swipe_up: Clear}
       - {click: Keyboard_last_lock}
       - {click: Keyboard_symbols, key_text_size: 20}
       - {click: '0'}
@@ -646,11 +649,11 @@ preset_keyboards:
       - {click: '*'}
       - {click: '-'}
       - {click: '4'}
-      - {click: _5_, long_click: Keyboard_edit, <<: *space_swipe}
+      - {click: _5_, long_click: Keyboard_editor, <<: *space_swipe}
       - {click: '6'}
       - {width: 20}
       - {click: '4'}
-      - {click: _5_, long_click: Keyboard_edit, <<: *space_swipe}
+      - {click: _5_, long_click: Keyboard_editor, <<: *space_swipe}
       - {click: '6'}
       - {click: '#'}
       - {click: '/'}
@@ -661,7 +664,7 @@ preset_keyboards:
       - {click: '7'}
       - {click: '8'}
       - {click: '9'}
-      - {click: BackSpace}
+      - {click: BackSpace, swipe_down: Clear, swipe_up: Clear}
       - {click: Keyboard_last_lock}
       - {click: Keyboard_symbols, key_text_size: 20}
       - {click: '0'}
@@ -699,16 +702,16 @@ preset_keyboards:
       - {click: l, long_click: '/', swipe_down: '/', swipe_up: '/'}
       - {width: 5}
       - {click: Shift_L, composing: "'", width: 15}
-      - {click: z, popup: [z, undo]}
-      - {click: x, popup: [x, cut]}
-      - {click: c, popup: [c, copy]}
-      - {click: v, popup: [v, paste]}
+      - {click: z, popup: [undo]}
+      - {click: x, popup: [cut, cut_all]}
+      - {click: c, popup: [copy, copy_all]}
+      - {click: v, popup: [paste, paste_all]}
       - {click: b}
       - {click: n}
       - {click: m}
-      - {click: BackSpace, width: 15}
+      - {click: BackSpace, swipe_down: Clear, swipe_up: Clear, width: 15}
       - {click: Keyboard_number, key_text_size: 20, long_click: Keyboard_symbols, label_symbol: ' ', width: 15}
-      - {<<: *comma, key_symbol_offset_y: -40}
+      - *comma
       - {click: Schema_switch, key_text_size: 20, long_click: Menu}
       - {click: space, key_text_size: 15, <<: *space_swipe, width: 40}
       - *period
@@ -795,9 +798,9 @@ preset_keyboards:
       - {click: ':'}
       - {click: '"'}
       - {click: '?'}
-      - {click: BackSpace}
+      - {click: BackSpace, swipe_down: Clear, swipe_up: Clear}
       - {click: Keyboard_last_lock, long_click: Keyboard_us_104, width: 15}
-      - {<<: *comma, key_symbol_offset_y: -30}
+      - *comma
       - {click: Keyboard_number_, key_text_size: 20}
       - {click: space, key_text_size: 15, <<: *space_swipe, width: 40}
       - *period
