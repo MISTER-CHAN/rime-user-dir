@@ -18,44 +18,45 @@ font: &font
 
 style:
   auto_caps: false #自動句首大寫:true|false|ascii
-  candidate_border: 0
-  candidate_border_round: 0
+# candidate_border: 0
+# candidate_border_round: 0
   candidate_font: *font #候選字型
   candidate_padding: 12 #候選項內邊距
   candidate_spacing: 0.5 #候選間距
   candidate_text_size: 20 #候選字號
+  candidate_text_vertical_bias: 1.0 #候选文本垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
   candidate_view_height: 40 #候選區高度
   candidate_corner_radius: 0 #候選項圓角半徑
   comment_font: *font #編碼提示字型
-  comment_height: 0 #編碼提示區高度
-  comment_on_top: false #編碼提示在上方或右側
-  comment_position: right
+  comment_height: 0 #編碼提示區高度（仅 top 模式约束高度，其余模式与 candidate_view_height 无区别）
+  comment_position: right #编码提示布局位置：right / top / overlay
+  comment_vertical_bias: 0.0 #编码提示垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
   comment_text_size: 15 #編碼提示字號
   hanb_font: ['Jigmo2.ttf', 'Jigmo3.ttf'] #擴充字型
   horizontal_gap: 6 #鍵水平間距
-  keyboard_padding: 0 #竖屏模式下，屏幕左右两侧与键盘的距离（曲面屏减少误触）
-  keyboard_padding_left: 0 #竖屏屏模式下，左手键盘布局，屏幕左侧与键盘的距离
-  keyboard_padding_right: 0 #竖屏屏模式下，左手键盘布局，屏幕右侧与键盘的距离
-  keyboard_padding_bottom: 0 #竖屏模式下，屏幕下边缘与键盘的距离（避免误触发全面屏手势）
-  keyboard_padding_land: 40 #横屏模式下，屏幕左右两侧与键盘的距离（避免横屏按键过度拉伸变形）
-  keyboard_padding_land_bottom: 0 #横屏模式下，屏幕下侧与键盘的距离
+# keyboard_padding: 0 #竖屏模式下，屏幕左右两侧与键盘的距离（曲面屏减少误触）
+# keyboard_padding_left: 0 #竖屏屏模式下，左手键盘布局，屏幕左侧与键盘的距离
+# keyboard_padding_right: 0 #竖屏屏模式下，左手键盘布局，屏幕右侧与键盘的距离
+# keyboard_padding_bottom: 0 #竖屏模式下，屏幕下边缘与键盘的距离（避免误触发全面屏手势）
+# keyboard_padding_land: 40 #横屏模式下，屏幕左右两侧与键盘的距离（避免横屏按键过度拉伸变形）
+# keyboard_padding_land_bottom: 0 #横屏模式下，屏幕下侧与键盘的距离
   key_font: *font #鍵盤字型
-  key_border: 0
+# key_border: 0
   key_height: 50 #鍵高
   key_long_text_size: 24 #長標籤字號
   key_text_size: 24 #鍵字號
-  key_text_offset_x: 0
-  key_text_offset_y: 0
-  key_symbol_offset_x: 0
-  key_symbol_offset_y: 0
-  key_hint_offset_x: 0
-  key_hint_offset_y: 0
-  key_press_offset_x: 0
-  key_press_offset_y: 0
+# key_text_offset_x: 0
+# key_text_offset_y: 0
+# key_symbol_offset_x: 0
+# key_symbol_offset_y: 0
+# key_hint_offset_x: 0
+# key_hint_offset_y: 0
+# key_press_offset_x: 0
+# key_press_offset_y: 0
   key_width: 10.0 #鍵寬，佔螢幕寬的百分比
   label_text_size: 22 #標籤字號
-  label_font: *font_mc #編標籤字型
-  latin_font: *font_mc #西文字型
+  label_font: [*font_mc] #編標籤字型
+  latin_font: [*font_mc] #西文字型
   keyboard_height: 240 #锁定键盘高度，避免切换时键盘高度变化而造成闪烁
   keyboard_height_land: 180 #锁定横屏下键盘高度，避免切换时键盘高度变化而造成闪烁
   popup_font: [*font_m, *font_s, *font_s2, *font_mc] #按键提示字体
@@ -65,13 +66,13 @@ style:
   popup_key_height: 50 #按键提示内键高度
   popup_text_size: 24 #按键提示字号
   reset_ascii_mode: false #顯示鍵盤時重置爲中文狀態
-  round_corner: 0 #按鍵圓角半徑
-  shadow_radius: 0.0 #按鍵陰影半徑
+# round_corner: 0 #按鍵圓角半徑
+# shadow_radius: 0.0 #按鍵陰影半徑
   symbol_font: [*font_m, *font_s, *font_s2, *font_mc] #符號字型
   symbol_text_size: 10 #符號字號
-  text_font: *font_mc #編碼字型
+  text_font: [*font_mc] #編碼字型
   vertical_gap: 12 #鍵盤行距
-# background_folder: #背景图保存在background目录下的哪个子目录
+# background_folder: 'backgrounds' #背景图保存在background目录下的哪个子目录
   enter_label_mode: 3 #是否使用App提供的ActionLabel内容作为Enter键的文本（由于多数App没有适配ActionLable，实际影响不大）。0不使用，1只使用actionlabel，2优先使用，3当其他方式没有获得label时才读取actionlabel
   enter_labels: # 定义Enter键的文本
     go: 'ic@arrow-right'
@@ -226,12 +227,8 @@ liquid_keyboard:
   # 目前只能直接写参数，不支持变量或者fallback机制。
   # 缺少参数时，自动从style中加载参数。除非需要指定liquid_keyboard使用与主键盘不同的背景色、背景图，否则不应设置被注释掉的参数。
   author: 'MISTER_CHAN'
-  row: 0 # 每屏最多显示多少行按键
-  row_land: 0 # 横屏每屏最多显示多少行按键
   key_height: 39 # 按键高度
-  key_height_land: 39 # 横屏模式按键高度
   single_width: 39 # single类型的按键宽度
-  vertical_gap: 0 # 纵向按键间隙
   margin_x: 1 # 左右按键间隙的1/2
   fixed_key_bar: # 固定按键条
     position: bottom # 摆放位置（在滚动区域的……） top|bottom|left|right
@@ -241,18 +238,6 @@ liquid_keyboard:
     name: ' !§ '
     type: SINGLE
     keys: [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~', ' ', '¡', '¢', '£', '¤', '¥', '¦', '§', '¨', '©', 'ª', '«', '¬', '­', '®', '¯', '°', '±', '²', '³', '´', 'µ', '¶', '·', '¸', '¹', 'º', '»', '¼', '½', '¾', '¿', '×', '÷']
-  candidate:
-    name: '▼'
-    type: CANDIDATE
-  clipboard:
-    name: '📋'
-    type: CLIPBOARD
-  collection:
-    name: '⭐'
-    type: COLLECTION
-  draft:
-    name: '🖆'
-    type: DRAFT
   faces:
     name: '🙂'
     type: SINGLE
@@ -313,7 +298,7 @@ preset_keys:
   Up: {label: 'ic@arrow-up', repeatable: true, functional: false, send: Up, description: 上}
   Right: {label: 'ic@arrow-right', repeatable: true, functional: false, send: Right, description: 右}
   select_all: {label: 'ic@select-all', functional: true, send: Control+a}
-  Clear: {label: 'ic@select-all', text: "{Control+a}{BackSpace}"} #全選並刪除
+  Clear: {label: 'ic@close-box-outline', text: "{Control+a}{BackSpace}"} #全選並刪除
   cut: {label: 'ic@content-cut', functional: true, send: Control+x}
   cut_all: {label: 'ic@select-all', text: "{Control+a}{Control+x}"} #全選並剪切
   copy: {label: 'ic@content-copy', functional: true, send: Control+c}
