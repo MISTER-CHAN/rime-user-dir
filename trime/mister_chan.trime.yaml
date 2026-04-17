@@ -21,8 +21,8 @@ style:
 # candidate_border: 0
 # candidate_border_round: 0
   candidate_font: *font #候選字型
-  candidate_padding: 12 #候選項內邊距
-  candidate_spacing: 0.5 #候選間距
+  candidate_padding: 15 #候選項內邊距
+  candidate_spacing: 0 #候選間距
   candidate_text_size: 20 #候選字號
   candidate_text_vertical_bias: 1.0 #候选文本垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
   candidate_view_height: 40 #候選區高度
@@ -65,7 +65,7 @@ style:
   popup_bottom_margin: 50 #按键提示底边距
   popup_key_height: 50 #按键提示内键高度
   popup_text_size: 24 #按键提示字号
-  reset_ascii_mode: false #顯示鍵盤時重置爲中文狀態
+  reset_ascii_mode_on_focus_change: false #顯示鍵盤時重置爲中文狀態
 # round_corner: 0 #按鍵圓角半徑
 # shadow_radius: 0.0 #按鍵陰影半徑
   symbol_font: [*font_m, *font_s, *font_s2, *font_mc] #符號字型
@@ -182,7 +182,7 @@ preset_color_schemes:
     return_key_text_color: 0xFFFFFF
     shadow_color: 0x000000 #按鍵文字陰影
     text_back_color: 0xEEEEEE #編碼區背景
-    text_color: 0x000000 #編碼
+    text_color: 0x666666 #編碼
 
   dark:
     name: '深色'
@@ -221,7 +221,7 @@ preset_color_schemes:
     return_key_text_color: 0x222222
     shadow_color: 0x000000
     text_back_color: 0x222222
-    text_color: 0xFFFFFF
+    text_color: 0xAAAAAA
 
 liquid_keyboard:
   # 目前只能直接写参数，不支持变量或者fallback机制。
