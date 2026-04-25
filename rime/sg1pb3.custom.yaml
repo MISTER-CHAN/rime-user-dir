@@ -7,8 +7,10 @@ patch:
 #   reset: 1
 # 'engine/processors/@before 0': predictor
 # 'engine/translators/@before 0': predict_translator
-  'engine/filters/@before_0': simplifier@trad_graph
-# 'engine/filters/@before 0': simplifier@simp_trad_graph
+  engine/translators/@next: lua_translator@*calc
+  'engine/filters/@before 0': simplifier@trad_graph
+# 'engine/filters/@after -1': simplifier@simp_trad_graph
+# speller/algebra/@next: xlit/123456789/qwertyuio/
 # predictor:
 #   db: predict.db
 #   max_candidates: 5
@@ -37,3 +39,4 @@ patch:
     '`/+': { __include: 'symbols_cantonese:/punctuator/half_shape/~' }
     '{' : '『'
     '}' : '』'
+  recognizer/patterns/calc: '^=.+$'
