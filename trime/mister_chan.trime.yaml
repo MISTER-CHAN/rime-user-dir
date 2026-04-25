@@ -22,7 +22,7 @@ style:
 # candidate_border_round: 0
   candidate_font: *font #候選字型
   candidate_padding: 15 #候選項內邊距
-  candidate_spacing: 0 #候選間距
+  candidate_spacing: 0.0 #候選間距
   candidate_text_size: 20 #候選字號
   candidate_text_vertical_bias: 1.0 #候选文本垂直偏移位置（仅 overlay 模式使用，需要间隙空间足够，范围 0.0~1.0，0.0=top，0.5=center，1.0=bottom）
   candidate_view_height: 40 #候選區高度
@@ -314,10 +314,10 @@ preset_keys:
   Sys_Req: {label: '⎙', functional: false, send: Sys_Req}
   Pause: {label: "⎉", functional: false, send: Pause}
   KP_Enter: {label: '⎆', send: KP_Enter}
-  liquid_keyboard_key_exit: {label: '         🡨 ', functional: true, send: function, command: liquid_keyboard, option: "-1"}
+  liquid_keyboard_key_exit: {label: '          🡨 ', functional: true, send: function, command: liquid_keyboard, option: "-1"}
   liquid_keyboard_key_space: {label: '        ', repeatable: true, send: space}
   liquid_keyboard_key_backspace: {label: ' ⌫ ', repeatable: true, functional: true, send: BackSpace}
-  liquid_keyboard_key_return: {label: ' ↵         ', functional: true, send: Return}
+  liquid_keyboard_key_return: {label: ' ↵          ', functional: true, send: Return}
   # rime組合鍵
 # F4: {label: 方案選單, send: F4}
   BackToPreviousSyllable: {label: 刪音節, send: Control+BackSpace}
