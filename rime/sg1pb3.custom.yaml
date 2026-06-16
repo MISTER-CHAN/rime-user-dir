@@ -9,11 +9,11 @@ patch:
 # 'engine/processors/@before 0': predictor
 # 'engine/translators/@before 0': predict_translator
   engine/translators/@next: lua_translator@*calc
-  'engine/filters/@before 0': simplifier@inh_glyph
-  'engine/filters/@before +0': simplifier@trad_hk
-  'engine/filters/@before ++0': simplifier@trad_tw
+  'engine/filters/@before 000': simplifier@inh_glyph
+  'engine/filters/@before 00': simplifier@trad_hk
+  'engine/filters/@before 0': simplifier@trad_tw
   'engine/filters/@0': simplifier@simp
-# 'engine/filters/@before +++0': simplifier@simp_inh_glyph
+# 'engine/filters/@before 0': simplifier@simp_inh_glyph
 # speller/algebra/@next: xlit/123456789/qwertyuio/
 # predictor:
 #   db: predict.db
