@@ -1,26 +1,44 @@
 patch:
   switches/@2:
-    options: [ noop, trad_graph, simplification ]
-    states: [ '漢字', '漢字（傳承字形）', '汉字' ]
+    options: [ noop, inh_glyph, trad_hk, trad_tw, simp ]
+    states: [ '傳統漢字', '傳承字形', '香港字形', '臺灣字形', '简化汉字' ]
+    abbrev: [ '漢', '傳', '港', '臺', '简' ]
 # switches/@next:
 #   name: prediction
 #   reset: 1
 # 'engine/processors/@before 0': predictor
 # 'engine/translators/@before 0': predict_translator
   engine/translators/@next: lua_translator@*calc
-  'engine/filters/@before 0': simplifier@trad_graph
-# 'engine/filters/@after -1': simplifier@simp_trad_graph
+  'engine/filters/@before 0': simplifier@inh_glyph
+  'engine/filters/@before +0': simplifier@trad_hk
+  'engine/filters/@before ++0': simplifier@trad_tw
+  'engine/filters/@0': simplifier@simp
+# 'engine/filters/@before +++0': simplifier@simp_inh_glyph
 # speller/algebra/@next: xlit/123456789/qwertyuio/
 # predictor:
 #   db: predict.db
 #   max_candidates: 5
 #   max_iterations: 1
-  trad_graph:
+  inh_glyph:
     opencc_config: nto.json
-    option_name: trad_graph
-# simp_trad_graph:
+    option_name: inh_glyph
+    excluded_types: [ reverse_lookup ]
+  trad_hk:
+    opencc_config: t2hkf.json
+    option_name: trad_hk
+    excluded_types: [ reverse_lookup ]
+  trad_tw:
+    opencc_config: t2tw.json
+    option_name: trad_tw
+    excluded_types: [ reverse_lookup ]
+# simp_inh_glyph:
 #   opencc_config: tts.json
-#   option_name: simp_trad_graph
+#   option_name: simp_inh_glyph
+#   excluded_types: [ reverse_lookup ]
+  simp:
+    opencc_config: t2s.json
+    option_name: simp
+    excluded_types: [ reverse_lookup ]
   punctuator/full_shape/=:
     '<' : '《'
     '>' : '》'
